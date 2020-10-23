@@ -46,7 +46,7 @@ StadioBean stadio = new StadioBean();
 				stadio = (StadioBean)it.next();
 		%>		
 			<tr>
-				<td><a href="<%=response.encodeURL("StadioServlet?nameStadio=" + stadio.getNome())%>"><%= stadio.getNome()%></a></td>
+				<td><a href="<%=response.encodeURL("./EventStadioServlet?stadioName=" + stadio.getNome())%>"><%= stadio.getNome()%></a></td>
 				<td><%= stadio.getNazione() %></td>
 				<td><%= stadio.getCittà() %></td>
 				<td><%= stadio.getIndirizzo() %></td>

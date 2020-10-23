@@ -15,7 +15,7 @@ public class StadioModelDM implements ObjectModel<StadioBean>{
 		PreparedStatement preparedstatement = null;
 		
 		StadioBean stadio = new StadioBean();
-		String selectSQL = "SELECT FROM * Stadio WHERE NOME = ?";
+		String selectSQL = "SELECT * FROM  Stadio WHERE Nome = ?";
 		
 		try{
 			connection = DriverManagerConnectionPool.getConnection();

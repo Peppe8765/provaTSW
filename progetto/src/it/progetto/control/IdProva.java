@@ -13,55 +13,63 @@ import javax.servlet.http.HttpServletResponse;
 
 import it.progetto.model.EventoBean;
 import it.progetto.model.EventoModelDM;
-import it.progetto.model.StadioBean;
-import it.progetto.model.StadioModelDM;
+import it.progetto.model.TicketBean;
+import it.progetto.model.TicketModelDM;
 
 
-@WebServlet("/EventStadioServlet")
-public class EventStadioServlet extends HttpServlet {
+@WebServlet("/IdProva")
+public class IdProva extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-	static EventoModelDM eModel = new EventoModelDM();
-	static StadioModelDM sModel = new StadioModelDM();
+    static EventoModelDM eModel = new EventoModelDM();
+	static TicketModelDM tModel = new TicketModelDM();
 	
-    public EventStadioServlet() {
+    public IdProva() {
         super();
+       
     }
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		@SuppressWarnings("unchecked")
-		Collection<EventoBean> eventCollection = (Collection<EventoBean>)request.getSession().getAttribute("eventStadio");
-		String stadioName = request.getParameter("stadioName");
+		Collection<TicketBean> tC = (Collection<TicketBean>)request.getSession().getAttribute("ticketEventoC");
 		
-		StadioBean stadio = (StadioBean)request.getSession().getAttribute("stadioS");
 		
-		if(stadio == null) {
+		String idEvent = request.getParameter("idEvent");
+		System.out.println(idEvent);
+		
+		EventoBean eventoS = (EventoBean)request.getSession().getAttribute("eventoS");
+		
+		
+		
+		
+	
+		if(eventoS == null) {
 			try {
-				stadio = sModel.doRetrieveByKey(stadioName);
+				eventoS = eModel.doRetrieveByKey(idEvent);
+				System.out.println();
 			}catch (SQLException e) {
 				e.printStackTrace();
 			}
-			request.setAttribute("stadioS", stadio);
+			request.setAttribute("eventoS", eventoS);
 		}
 		
-		
-		if(eventCollection == null) {
-			
+		if(tC == null) {
 			try {
-				eventCollection = eModel.doRetrieveAllByStadioName(stadioName);
+				tC = tModel.doRetrieveAllByEvent(idEvent);
 			}catch (SQLException e) {
 				e.printStackTrace();
 			}
-			request.setAttribute("eventStadio", eventCollection);
+			request.setAttribute("ticketEventoC", tC);
 		}
-
-		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/Stadio.jsp");
+		
+		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/Evento.jsp");
 		dispatcher.forward(request, response);
 	}
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		doGet(request, response);
 	}
 

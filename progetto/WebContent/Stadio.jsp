@@ -1,3 +1,4 @@
+<%@page import="it.progetto.model.StadioBean"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.Collection"%>
 <%@page import="it.progetto.model.EventoBean"%>
@@ -8,8 +9,11 @@
 Collection<EventoBean> eventCollection = (Collection<EventoBean>)request.getAttribute("eventStadio");
 String stadioName = (String)request.getParameter("stadioName");
 
-if(eventCollection == null){
-	response.sendRedirect(response.encodeRedirectURL("./EventStadioServlet?stadioName="+stadioName));
+StadioBean stadio = (StadioBean)request.getAttribute("stadioS");
+
+
+if(stadio == null && eventCollection == null){
+	response.sendRedirect(response.encodeRedirectURL("./EventStadioServlet"));
 	return;
 }
 
@@ -25,20 +29,27 @@ EventoBean event = new EventoBean();
 
 <link href="ProductStyle.css" rel="stylesheet" type="text/css">
 
-<title>Insert title here</title>
+<title><%=stadioName %></title>
 </head>
 <body>
 	<div>Navbar</div>
 	
-	<h1>Lista eventi dello stadio</h1>	
+	<h1><%=stadioName %></h1>	
+	
+<img alt="<%=stadio.getNome() %>" src="foto/<%=stadio.getNome() + ".jpg"%>" height="200">	
+	
+	
+	
+	<p><%=stadio.getDescrizione() %></p>
 	
 	<div>
+		<h2>Lista eventi</h2>
+	
 		<table>
 			<tr>
 				<th>Codice Evento</th>
 				<th>Titolo</th>
 				<th> Data dell'evento</th>
-				<th> Nome dello stadio</th>
 			</tr>
 		
 <%
@@ -46,19 +57,19 @@ EventoBean event = new EventoBean();
 
 	while(it.hasNext()){
 		event = (EventoBean)it.next();
-	
+		String id = "" + event.geteCodiceID();
 %>		
 	<tr>
-				<td><%=event.geteCodiceID() %></td>
-				<td><a href="<%=response.encodeURL("EventoStadioServlet?idEvent=" + event.geteCodiceID())%>"><%=event.getTitolo() %></a></td>		
+				<td><%=id%></td>
+				<%System.out.println(""+id); %>
+				<td><a href="<%=response.encodeURL("./EventoServlet?idEvent=" + id)%>"><%=event.getTitolo() %></a></td>		
 				<td><%=event.getDataEvento() %></td>
-				<td><a href="<%=response.encodeURL("StadioServlet?stadioName=" + event.getStadioNome())%>"><%=event.getStadioNome() %></a></td>
 			</tr>	
 		
 <%} %>		
 		
 		</table>
-	
+
 	
 	
 	
