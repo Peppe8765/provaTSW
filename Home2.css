@@ -1,0 +1,334 @@
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+	font-family: "Comic Sans MS", Serif;
+	background: rgba(191, 255, 0, 0.4);
+	margin: 0;
+	overflox-x: hidden;
+}
+
+/*.tickets {
+	margin-left: 20px;
+	background: gold;
+}
+.tickets h2 {
+	color: purple;
+	font-size: 32px;
+}*/
+
+/*Nav Bar*/
+
+.NavBar1 {
+	font-size: 16px;
+	list-style-type: none;
+	border-bottom: 1px solid black;
+	box-shadow: 2px 2px 15px black;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: gold;
+	position: sticky;
+	top: 0;
+	left: 0;
+}
+
+
+.sinistra {
+	float: left;
+	border-right: 1px solid white;
+}
+
+.destra {
+	float: right;
+	margin-right: 20px;
+}
+
+
+li a {
+	display: block;
+	color: black;
+	text-align: center;
+	padding: 14px 25px;
+	text-decoration: none;
+}
+
+li a:hover:not(.active) {
+	background-color: tomato;
+	color: white;
+}
+
+.active {
+	background-color: tomato;
+	color: white;
+}
+
+/*.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: gold;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  	color: black;
+  	padding: 12px 0px;
+  	text-decoration: none;
+  	display: block;
+  	text-align: center;
+}
+
+.dropdown-content a:hover 
+{background-color: tomato;}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/*COSE NavBar*/
+
+
+
+/*.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 17px;    
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.topnav a:hover, .dropdown:hover .dropbtn {
+  background-color: #555;
+  color: white;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}*/
+
+/*@media screen and (max-width: 750px) {
+  .NavBar1 .sinistra, .dropdown .dropbtn {
+    display: none;
+  }
+  .NavBar1 a.icon {
+    float: left;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  	.NavBar1.responsive {position: relative;}
+  	.NavBar1.responsive .icon {
+    	position: absolute;
+    	border-right: 1px solid white;
+    	left: 0;
+    	top: 0;
+  	}
+  	.NavBar1.responsive a.sinistra {
+    	float: none;
+    	display: block;
+    	text-align: center;
+  	}
+  	.NavBar1.responsive a.destra {
+		display:none;
+	}
+  	.NavBar1.responsive .dropdown {float: none;}
+  	.NavBar1.responsive .dropdown-content {position: relative;}
+  	.NavBar1.responsive .dropdown .dropbtn {
+    	display: block;
+    	width: 100%;
+    	text-align: center;
+  	}*/
+
+/*Foto giganti*/
+
+.galleria-foto-giganti {
+	margin-top: 1px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.foto-gigante img {
+	max-width: 100%;
+	height: auto;
+	display: block;
+}
+
+.scritta-nella-foto {
+	text-align: center;	
+}
+
+
+
+
+
+
+
+/* Eventi importanti*/
+
+
+.eventi-importanti {
+	margin: auto;
+	background-color: tomato;
+}
+
+.titolo-eventi-importanti{
+	font: 28px "Comic Sans MS", serif;
+	text-align: center;
+}
+
+div.galleria-foto-eventi{
+	float: left;
+}
+
+div.foto-eventi {
+	border: 1px solid #ccc;
+	margin: 10px;
+}
+
+div.foto-eventi:hover {
+	border: 1px solid #777;
+}
+
+div.foto-eventi img {
+	max-width: 100%;
+	height: auto;
+	object-fit: contain;
+}
+
+
+
+/*Stadi più importanti*/
+
+.stadi-importanti {
+	margin: auto;
+	background-color:yellow;
+	
+}
+
+.titolo-stadi-importanti {
+	font: 28px "Comic Sans MS", serif;
+	text-align: center;
+}
+
+div.galleria-foto-stadi {
+	float: left;
+}
+
+div.foto-stadi {
+	border: 1px solid #ccc;
+	margin: 10px;
+	background-color: white;
+  	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  	margin-bottom: 25px;
+}
+
+div.foto-stadi:hover {
+	border: 1px solid #777;
+}
+
+div.foto-stadi img {
+	max-width: 100%;
+	height: auto;
+	object-fit: contain;
+}
+
+div.desc {
+	text-align: center;
+}
+
+/*Footer*/
+
+.footer {
+	background-color: purple;
+	text-align: center;
+	margin-right: auto;
+	margin-left: auto;
+	color: white;
+}
+
+
+
+/* For mobile phones: */
+[class*="col-"] {
+	width: 100%;
+}
+
+@media only screen and (min-width: 600px) {
+  /* For tablets: */
+  	.col-s-1 {width: 8.33%;}
+  	.col-s-2 {width: 16.66%;}
+  	.col-s-3 {width: 25%;}
+  	.col-s-4 {width: 33.33%;}
+  	.col-s-5 {width: 41.66%;}
+  	.col-s-6 {width: 50%;}
+  	.col-s-7 {width: 58.33%;}
+  	.col-s-8 {width: 66.66%;}
+  	.col-s-9 {width: 75%;}
+  	.col-s-10 {width: 83.33%;}
+  	.col-s-11 {width: 91.66%;}
+  	.col-s-12 {width: 100%;}
+}
+
+@media only screen and (max-width: 999px) {
+	.NavBar1 .sinistra, .dropdown .dropbtn {display: none;}
+  	.NavBar1 a.icon {float: left; display: block;}
+}
+@media only screen and (min-width: 1000px) {
+  /* For tablets: */
+  	.NavBar1 .sinistra, .dropdown .dropbtn {display: block;}
+  	.NavBar1 a.icon {float: left; display: none;}
+  	.col-1 {width: 8.33%;}
+  	.col-2 {width: 16.66%;}
+  	.col-3 {width: 25%;}
+  	.col-4 {width: 33.33%;}
+  	.col-5 {width: 41.66%;}
+  	.col-6 {width: 50%;}
+  	.col-7 {width: 58.33%;}
+  	.col-8 {width: 66.66%;}
+  	.col-9 {width: 75%;}
+  	.col-10 {width: 83.33%;}
+  	.col-11 {width: 91.66%;}
+  	.col-12 {width: 100%;}
+}
+
