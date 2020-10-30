@@ -1,3 +1,4 @@
+<%@page import="it.progetto.model.EventoBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import = "java.util.*,it.progetto.model.Cart,it.progetto.model.TicketBean"%>
 
@@ -5,15 +6,25 @@
 <%
 
 	Cart<TicketBean> cart = (Cart<TicketBean>)request.getAttribute("carrello");
+	Collection<EventoBean> eC = (Collection<EventoBean>)request.getAttribute("eC");
 	
 	if(cart == null){
 		response.sendRedirect(response.encodeRedirectURL("./CartControl"));
 		return;
 	}
 	
-	int codiceBiglietto;
-	double costo ;
-	double totale = 0;
+	if(eC == null){
+		response.sendRedirect(response.encodeRedirectURL("./CartControl"));
+		return;
+	}
+	
+	
+	double totale = (Double)request.getAttribute("totale");
+	
+	Collection<TicketBean> tC = cart.getItems();
+	
+	TicketBean tk = new TicketBean();
+	EventoBean ev = new EventoBean();
 	
 %>
 
@@ -37,15 +48,6 @@
 		
 		
 		
-	<%
-		List<TicketBean> ticketCart = cart.getItems();
-		
-		if(ticketCart.size() > 0){
-	%>	
-		
-	
-		
-	<% } %>
 		
 		
 		<a href="<%=response.encodeURL("CartControl?action=clearCart")%>">svuota carrello</a>
@@ -53,33 +55,48 @@
 			<tr>
 				<th>Codice Biglietto</th>
 				<th>Settore</th>
-				<th>Codice ID evento</th>
+				<th>Nome evento</th>
+				<th>Data</th>
+				<th>Stadio</th>
 				<th>Costo</th>
 			</tr>
 		
 		<%
-			if(ticketCart.size() > 0){
-				
-				for(TicketBean tk : ticketCart){	
+		List<TicketBean> listCartItem = cart.getItems();
+		
+		if(listCartItem.size() > 0){
+		
+			Iterator<?> itTk = tC.iterator();
+			Iterator<?> itEv = eC.iterator();
+			
+			while(itTk.hasNext()){
+				tk = (TicketBean)itTk.next();
+				while(itEv.hasNext()){
+					EventoBean OldEvent= (EventoBean)itEv.next();
+					if(tk.getEventoECodiceId() == OldEvent.geteCodiceID()){
+						ev = OldEvent;
 					
-					codiceBiglietto = tk.getCodiceBiglietto();
-					costo = tk.getCosto();
-					totale += costo;
+					}
+
+		}
+				itEv = eC.iterator();
 		%>
 			<tr>
-				<td><%=codiceBiglietto %></td>
+				<td><%=tk.getCodiceBiglietto() %></td>
 				<td><%=tk.getSettore() %></td>
-				<td><%=tk.getEventoECodiceId() %></td>
-				<td><%=costo%></td>
-				<td><a href="<%= response.encodeURL("CartControl?action=deleteCart&id=" + codiceBiglietto)%>">cancella</a></td>
-				<td><a href="<%= response.encodeURL("CartControl?action=addCart&id=" + codiceBiglietto)%>">aggiungi di nuovo</a></td>
+				<td><%=ev.getTitolo() %></td>
+				<td><%=ev.getDataEvento() %></td>
+				<td><%=ev.getStadioNome() %></td>
+				<td><%=tk.getCosto()%></td>
+				<td><a href="<%= response.encodeURL("CartControl?action=deleteCart&id=" + tk.getCodiceBiglietto())%>">cancella</a></td>
+				<td><a href="<%= response.encodeURL("CartControl?action=addCart&id=" + tk.getCodiceBiglietto())%>">aggiungi di nuovo</a></td>
 			</tr>
 			
 			
 		<%} %>
 			
 			<tr>
-				<td colspan="3">Totale: </td>
+				<td colspan="5">Totale: </td>
 				<td><%=totale %></td>
 			</tr>
 		
@@ -88,7 +105,7 @@
 		%>
 		
 		<tr>
-			<td colspan="5">Non ci sono prodotti nel carrello</td>
+			<td colspan="6">Non ci sono prodotti nel carrello</td>
 		</tr>
 		<%} %>
 		
@@ -122,8 +139,8 @@
 			<input type="hidden" name="action" value="payment">
 			<label for="Indirizzo">Indirizzo:</label><br>
 			<input type="text" id="Indirizzo" name="Indirizzo" placeholder="Via/Viale" maxlength="100" required><br>
-			<label for="Destonatario">Destonatario:</label><br>
-			<input type="text" id="Destonatario" name="Destonatario" placeholder="Nome Cognome" maxlength="50" required><br>
+			<label for="Destinatario">Destinatario:</label><br>
+			<input type="text" id="Destinatario" name="Destinatario" placeholder="Nome Cognome" maxlength="50" required><br>
 			<label for="Telefono">Telefono:</label><br>
 			<input type="text" id="Telefono" name="Telefono" placeholder="000 0000000" min="0000000000" maxlength="10" required><br>
 	
