@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Collection;
 import java.util.Iterator;
-
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,16 +16,19 @@ import javax.servlet.http.HttpServletResponse;
 import it.progetto.model.TicketBean;
 import it.progetto.model.TicketModelDM;
 import it.progetto.model.Cart;
+import it.progetto.model.EventoBean;
+import it.progetto.model.EventoModelDM;
 
-/**
- * Servlet implementation class CartControl
- */
+
 @WebServlet("/CartControl")
 public class CartControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	static TicketModelDM model = new TicketModelDM();
        
+	static EventoModelDM eModel = new EventoModelDM();
+	
+	
     public CartControl() {
         super();
     }
@@ -39,11 +42,24 @@ public class CartControl extends HttpServlet {
 		
 		@SuppressWarnings("unchecked")
 		Cart<TicketBean> cart = (Cart<TicketBean>)request.getSession().getAttribute("carrello");
-		
+	
 		if(cart == null) {
 			cart = new Cart<TicketBean>();
 			request.getSession().setAttribute("carrello", cart);
 		}
+		
+		@SuppressWarnings("unchecked")
+		Collection<EventoBean> eC = (Collection<EventoBean>)request.getSession().getAttribute("events");
+		
+		if(eC == null) {
+			try {
+				eC = eModel.doRetrieveAll("ECodiceID");
+			}catch (SQLException e) {
+				e.printStackTrace();
+			}
+			request.setAttribute("eC", eC);
+		}
+		
 				
 		String action = request.getParameter("action");
 		
@@ -67,7 +83,7 @@ public class CartControl extends HttpServlet {
 					TicketBean tk = model.doRetrieveByKey(id);
 					if(tk != null && !tk.isEmpty()) {
 						cart.deleteItem(tk);
-						request.setAttribute("messageCart", "il biglietto con codice " +tk.getCodiceBiglietto()+ " è stato eliminato dal carrello");
+						request.setAttribute("messageCart", "il biglietto con codice" +tk.getCodiceBiglietto()+ " è stato eliminato dal carrello");
 					}
 				}
 				else if(action.equals("clearCart")) {
@@ -78,7 +94,7 @@ public class CartControl extends HttpServlet {
 
 					
 						cart.deleteAllItems();
-						request.setAttribute("messageP", "Pagamento avvenuto con successo! Ordine inviato a " + Destinatario + " all'indirizzo " + Indirizzo + " con telefono " + Telefono);
+						request.setAttribute("messageP", "Pagamento avvenuto con successo  Ordine inviato a " + Destinatario + " all'indirizzo " + Indirizzo + " e telefono " + Telefono);
 					
 				}
 				
@@ -91,7 +107,24 @@ public class CartControl extends HttpServlet {
 		
 		request.setAttribute("carrello", cart);
 		
+		int codiceBiglietto;
+		Double costo ;
+		Double totale = 0.0;
+		
+		List<TicketBean> ticketCart = cart.getItems();
+		
+		if(ticketCart.size() > 0){
+			
+			for(TicketBean tk : ticketCart){	
 				
+				codiceBiglietto = tk.getCodiceBiglietto();
+				costo = tk.getCosto();
+				totale += costo;
+		
+			}
+		}
+		request.setAttribute("totale", totale);
+		
 		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/Carrello.jsp");
 		dispatcher.forward(request, response);
 	
