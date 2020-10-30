@@ -14,18 +14,32 @@ if(sCollection == null){
 
 StadioBean stadio = new StadioBean();
 %>    
-    
+   
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-
-<link href="ProductStyle.css" rel="stylesheet" type="text/css">
-
-<title>Stadi</title>
+<title>Ticket S Stadi</title>
+</head>
+<link rel="stylesheet" href="Stadi.css" >
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 	
+	
+	<ul class= "NavBar1" id= "myNavBar1">
+  	<li><a class= "sinistra" href="#home">HOME</a></li>
+  	<li><a class= "sinistra active" href="#stadi">STADI</a></li>
+  	<li><a class= "sinistra" href="#eventi">EVENTI</a></li>
+  	<li><a class= "sinistra" href="#biglietti">BIGLIETTI</a></li>
+ 	<li><a class= "sinistra" href="#about">ABOUT</a>
+ 		<a href="javascript:void(0);" class="icon" onclick="myFunction()"><b>&#9776;</b></a></li>
+  	<li><a class= "destra" href="#carrello" data-toggle="tooltip" data-placement="left" title= "CARRELLO"><i class='fas fa-shopping-cart'></i></a></li>
+  	<li><a class= "destra" href="#login" data-toggle="tooltip" data-placement="left" title="LOGIN"><i class='fas fa-user-alt'></i></a></li>
+</ul>
+
+
 	<div>Lista degli stadi</div>
 	
 	<div>

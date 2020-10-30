@@ -67,7 +67,7 @@ public class CartControl extends HttpServlet {
 					TicketBean tk = model.doRetrieveByKey(id);
 					if(tk != null && !tk.isEmpty()) {
 						cart.deleteItem(tk);
-						request.setAttribute("messageCart", "il biglietto con codice" +tk.getCodiceBiglietto()+ " è stato eliminato dal carrello");
+						request.setAttribute("messageCart", "il biglietto con codice " +tk.getCodiceBiglietto()+ " è stato eliminato dal carrello");
 					}
 				}
 				else if(action.equals("clearCart")) {
@@ -78,7 +78,7 @@ public class CartControl extends HttpServlet {
 
 					
 						cart.deleteAllItems();
-						request.setAttribute("messageP", "Pagamento avvenuto con successo  Ordine inviato a " + Destinatario + " all'indirizzo " + Indirizzo + " e telefono " + Telefono);
+						request.setAttribute("messageP", "Pagamento avvenuto con successo! Ordine inviato a " + Destinatario + " all'indirizzo " + Indirizzo + " con telefono " + Telefono);
 					
 				}
 				
