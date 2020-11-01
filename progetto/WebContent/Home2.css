@@ -2,10 +2,9 @@
 * {
   box-sizing: border-box;
 }
-
 body {
 	font-family: "Comic Sans MS", Serif;
-	background: rgba(191, 255, 0, 0.4);
+	/*background: rgba(191, 255, 0, 0.4);*/
 	margin: 0;
 	overflox-x: hidden;
 }
@@ -21,6 +20,7 @@ body {
 
 /*Nav Bar*/
 
+
 .NavBar1 {
 	font-size: 16px;
 	list-style-type: none;
@@ -34,19 +34,14 @@ body {
 	top: 0;
 	left: 0;
 }
-
-
 .sinistra {
 	float: left;
 	border-right: 1px solid white;
 }
-
 .destra {
 	float: right;
 	margin-right: 20px;
 }
-
-
 li a {
 	display: block;
 	color: black;
@@ -54,12 +49,10 @@ li a {
 	padding: 14px 25px;
 	text-decoration: none;
 }
-
 li a:hover:not(.active) {
 	background-color: tomato;
 	color: white;
 }
-
 .active {
 	background-color: tomato;
 	color: white;
@@ -193,14 +186,9 @@ li a:hover:not(.active) {
 	height: auto;
 	display: block;
 }
-
 .scritta-nella-foto {
 	text-align: center;	
 }
-
-
-
-
 
 
 
@@ -210,18 +198,15 @@ li a:hover:not(.active) {
 .eventi-importanti {
 	margin: auto;
 }
-
 .titolo-eventi-importanti{
 	font: 28px "Comic Sans MS", serif;
 	text-align: center;
 	background-color: tomato;
 }
-
 div.galleria-foto-eventi{
 	float: left;
 	background-color: tomato;
 }
-
 div.foto-eventi {
 	border: 1px solid #ccc;
 	margin: 10px;
@@ -233,18 +218,14 @@ div.foto-eventi {
 	border: 1px solid #ccc;
 	margin: 10px;
 }
-
 div.foto-eventi:hover {
 	border: 1px solid #777;
 }
-
 div.foto-eventi img {
 	max-width: 100%;
 	height: auto;
 	object-fit: contain;
 }
-
-
 
 /*Stadi più importanti*/
 
@@ -252,18 +233,15 @@ div.foto-eventi img {
 	margin: auto;
 	
 }
-
 .titolo-stadi-importanti {
 	font: 28px "Comic Sans MS", serif;
 	text-align: center;
 	background-color:yellow;
 }
-
 div.galleria-foto-stadi {
 	float: left;
 	background-color:yellow;
 }
-
 div.foto-stadi {
 	border: 1px solid #ccc;
 	margin: 10px;
@@ -271,17 +249,14 @@ div.foto-stadi {
   	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   	margin-bottom: 25px;
 }
-
 div.foto-stadi:hover {
 	border: 1px solid #777;
 }
-
 div.foto-stadi img {
 	max-width: 100%;
 	height: auto;
 	object-fit: contain;
 }
-
 div.desc {
 	text-align: center;
 }
@@ -297,12 +272,156 @@ div.desc {
 }
 
 
+.buttoncino {
+	background-color: tomato;
+	color: white;
+	font: "Comic Sans MS", Serif;
+	text-align: center;
+	margin: 10px;
+	cursor: pointer;
+	transition-duration: 0.4s;
+}
+
+.rettangoli {
+	width: 230px;
+	height: 35px;
+	font: 18px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: tomato;
+	border-radius: 5px;
+	margin-top: 5px;
+	margin-bottom: 3px;
+}
+
+/*PageBiglietti*/
+
+.biglietti {
+	margin: auto;
+}
+.titolo-biglietti {
+	text-align: center;
+}
+#bigliettitable td, #bigliettitable th {
+	border: 1px solid grey;
+}
+#bigliettitable td:hover {
+	background-color: blue;
+}
+#buttoncinobig {
+	font: 14px;
+	border: 1px solid white;
+	padding: 5px 15px;
+}
+#buttoncinobig:hover {
+  	box-shadow: 0 4px 8px 0px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+/*PageCarrello*/
+
+#carrellotable th, #carrellotable td {
+	border: 1px solid #ddd;
+}
+.carrello, .pagamento {
+	margin: auto;
+}
+.pagamento {
+  	border: 1px solid #ccc;
+	margin-top: 50px;
+	background-color: white;
+  	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  	margin-bottom: 25px;
+}
+.pagamento h2, .rettangolicar, .buttoncinocar, .labelcar {
+	margin-left: 30%;
+}
+table, td, th .carrello{  
+	margin-top: 20px;
+  	text-align: left;
+}
+table {
+ 	border-collapse: collapse;
+  	width: 100%;
+}
+th, td {
+  	padding: 15px;
+}
+#rettangolicar {
+	width: 230px;
+	height: 35px;
+	font: 18px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: tomato;
+	border-radius: 5px;
+	margin-top: 5px;
+	margin-bottom: 3px;
+}
+#buttoncinocar {
+	
+}
+
+
+/*PageLogin*/
+
+
+.scelta {
+	position: relative;
+	margin: auto;
+	display: inline-block;
+}
+.button {
+	background-color: gold;
+	font: 30px "Comic Sans MS", Serif;
+	border-style: inset;
+	border-width: 5px;
+	border-color: tomato;
+	border-radius: 8px;
+	margin: 10px;
+	cursor: pointer;
+}
+.button:hover {
+	transition-duration: 0.4s;
+	background-color: tomato;
+	color: white;
+}
+/*.button:active {
+	background-color: tomato;
+	color: white;
+}*/
+.registrazione, .login, .loginAdmin {
+	margin-left: auto;
+	margin-right: auto;
+}
+.rettangolilog {
+	width: 230px;
+	height: 35px;
+	font: 18px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: tomato;
+	border-radius: 5px;
+	margin-top: 5px;
+	margin-bottom: 3px;
+}
+.buttoncinolog {
+	background-color: tomato;
+	color: white;
+	font: 22px "Comic Sans MS", Serif;
+	border-style: inset;
+	border-width: 3px;
+	border-color: tomato;
+	border-radius: 5px;
+	margin-top: 5px;
+	margin-bottom: 15px;
+	cursor: pointer;
+}
+
 
 /* For mobile phones: */
 [class*="col-"] {
 	width: 100%;
 }
-
 @media only screen and (min-width: 600px) {
   /* For tablets: */
   	.col-s-1 {width: 8.33%;}
@@ -318,7 +437,6 @@ div.desc {
   	.col-s-11 {width: 91.66%;}
   	.col-s-12 {width: 100%;}
 }
-
 @media only screen and (max-width: 999px) {
 	.NavBar1 .sinistra, .dropdown .dropbtn {display: none;}
   	.NavBar1 a.icon {float: left; display: block;}

@@ -21,7 +21,7 @@ StadioBean stadio = new StadioBean();
 <meta charset="UTF-8">
 <title>Ticket S Stadi</title>
 </head>
-<link rel="stylesheet" href="Stadi.css" >
+<link rel="stylesheet" href="Home2.css" >
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>

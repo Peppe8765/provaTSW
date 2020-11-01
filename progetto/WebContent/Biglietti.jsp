@@ -33,7 +33,7 @@ EventoBean event = new EventoBean();
 <meta charset="UTF-8">
 <title>Ticket S Biglietti</title>
 </head>
-<link rel="stylesheet" href="Biglietti.css" >
+<link rel="stylesheet" href="Home2.css" >
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <body>
@@ -53,22 +53,21 @@ EventoBean event = new EventoBean();
 	
 	
 <div class="biglietti col-10 col-s-12">
-	<h1>Biglietti in vendita</h1>
+	<h1 class="titolo-biglietti">Biglietti in vendita</h1>
 
 	<%
 	String message = (String)request.getAttribute("message");
 	if(message != null && !message.equals("")) {
 %>
-	<p style="color: green;"><%=message %></p>
+	<p class="titolo-biglietti" style="color: green;"><%=message %></p>
 <%}%>
 
 	
-		<table>
+		<table id="biglietti">
 			<tr>
 				<th>Codice Biglietto</th>
 				<th>Evento</th>
-				<th>Stadio</th>
-				<th>Settore</th>
+				<th>Stadio e Settore</th>
 				<th>Data</th>
 				<th>Biglietti rimanenti</th>
 				<th>Costo</th>
@@ -92,14 +91,15 @@ EventoBean event = new EventoBean();
 				itEv = ev.iterator();
 	%>				
 			<tr>
-				<td><%=tbean.getCodiceBiglietto() %></td>
+				<td>Codice biglietto: <%=tbean.getCodiceBiglietto() %></td>
+				<td><%=event.getDataEvento()%></td>
 				<td><%=event.getTitolo()%></td>
 				<td><%=event.getStadioNome()%>
 				<%=tbean.getSettore() %></td>
 				<td><%=event.getDataEvento()%></td>
-				<td><%=tbean.getQuantità() %></td>
-				<td><%=tbean.getCosto() %></td>
-				<td><a href="<%=response.encodeURL("BigliettiServlet?action=addCart&id=" + tbean.getCodiceBiglietto()) %>"><button class="buttoncino" type ="button" onclick=""> Aggiungi</button></a></td>
+				<td>Biglietti rimanenti: <%=tbean.getQuantità() %></td>
+				<td>Costo: <%=tbean.getCosto() %></td>
+				<td><a href="<%=response.encodeURL("BigliettiServlet?action=addCart&id=" + tbean.getCodiceBiglietto()) %>"><button class="buttoncino" id="buttoncinobig" type ="button" onclick=""> Aggiungi</button></a></td>
 				
 			</tr>	
 	<%} %>		
