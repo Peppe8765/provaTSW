@@ -45,15 +45,28 @@ Blob foto = (Blob)user.getFotoProfilo();
 <html>
 <head>
 <meta charset="UTF-8">
-
-<link href="ProductStyle.css" rel="stylesheet" type="text/css">
-
-<title>Profilo</title>
+<title>Ticket S Profilo</title>
 </head>
+<link rel="stylesheet" href="Home2.css" >
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <body>
 
-<h1>Profilo</h1>
-	<div>Navbar</div>
+
+
+
+<!-- Navigation Bar -->
+
+<ul class= "NavBar1" id= "myNavBar1">
+  	<li><a class= "sinistra" href="#home">HOME</a></li>
+  	<li><a class= "sinistra" href="#stadi">STADI</a></li>
+  	<li><a class= "sinistra" href="#eventi">EVENTI</a></li>
+  	<li><a class= "sinistra" href="#biglietti">BIGLIETTI</a></li>
+ 	<li><a class= "sinistra" href="#about">ABOUT</a>
+ 		<a href="javascript:void(0);" class="icon" onclick="myFunction()"><b>&#9776;</b></a></li>
+  	<li><a class= "destra" href="#carrello" data-toggle="tooltip" data-placement="left" title= "CARRELLO"><i class='fas fa-shopping-cart'></i></a></li>
+  	<li><a class= "destra active" href="#login"  data-placement="left"><i class='fas fa-user-alt'></i></a></li>
+</ul>
 
 	<div>
 		<div>

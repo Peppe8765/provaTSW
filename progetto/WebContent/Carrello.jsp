@@ -42,7 +42,7 @@
 
 
 	<div class="carrello col-8 col-s-10">
-		<h2> Carrello</h2>
+		<h2>Il tuo carrello</h2>
 		
 		
 		
@@ -56,7 +56,7 @@
 		
 	<% } %>
 		
-		<a href="<%=response.encodeURL("CartControl?action=clearCart")%>">svuota carrello</a>
+		<a href="<%=response.encodeURL("CartControl?action=clearCart")%>"><button class="buttoncino" type ="button" onclick="">svuota carrello</button></a>
 		
 		
 		<table id="carrellotable">
@@ -81,8 +81,8 @@
 				<td><%=tk.getSettore() %></td>
 				<td><%=tk.getEventoECodiceId() %></td>
 				<td><%=costo%></td>
-				<td><a href="<%= response.encodeURL("CartControl?action=deleteCart&id=" + codiceBiglietto)%>">cancella</a></td>
-				<td><a href="<%= response.encodeURL("CartControl?action=addCart&id=" + codiceBiglietto)%>">aggiungi di nuovo</a></td>
+				<td><a href="<%= response.encodeURL("CartControl?action=deleteCart&id=" + codiceBiglietto)%>"><button class="buttoncino" type ="button" onclick="">cancella</button></a></td>
+				<td><a href="<%= response.encodeURL("CartControl?action=addCart&id=" + codiceBiglietto)%>"><button class="buttoncino" type ="button" onclick="">aggiungi di nuovo</button></a></td>
 			</tr>
 			
 			
@@ -117,7 +117,7 @@
 
 
 
-	<div class="pagamento col-4 col-s-8">
+	<div class="pagamento col-5 col-s-7">
 	
 	<%
 	String messageP = (String)request.getAttribute("messageP");
@@ -130,14 +130,14 @@
 		<h2>Pagamento</h2>
 		<form action="<%=response.encodeURL("CartControl")%>" method="GET">
 			<input type="hidden" name="action" value="payment">
-			<label class="labelcar" for="Indirizzo">Indirizzo:</label><br>
-			<input class="rettangolicar" type="text" id="Indirizzo" name="Indirizzo" placeholder="Via/Viale" maxlength="100" required><br>
-			<label class="labelcar" for="Destinatario">Destinatario:</label><br>
-			<input class="rettangolicar" type="text" id="Destinatario" name="Destinatario" placeholder="Nome Cognome" maxlength="50" pattern="[A-Za-z]{3}" title="Three letter country code" required><br>
-			<label class="labelcar" for="Telefono">Telefono:</label><br>
-			<input class="rettangolicar" type="text" id="TelefonoCarrello" name="Telefono" placeholder="000 0000000" min="0000000000" maxlength="10" required><br>
+			<label class="label" for="Indirizzo">Indirizzo:</label><br>
+			<input class="rettangoli" type="text" id="Indirizzo" name="Indirizzo" placeholder="Via/Viale" maxlength="100" required><br>
+			<label class="label" for="Destinatario">Destinatario:</label><br>
+			<input class="rettangoli" type="text" id="Destinatario" name="Destinatario" placeholder="Nome Cognome" maxlength="50" required><br>
+			<label class="label" for="Telefono">Telefono:</label><br>
+			<input class="rettangoli" type="text" id="TelefonoCarrello" name="Telefono" placeholder="000 0000000" pattern="[0-9]{8,}" title="Solo numeri, minimo 8 cifre" required><br>
 	
-			<input class="buttoncinocar" type = "submit" value = "Acquista">
+			<input class="buttoncino" type = "submit" value = "Acquista">
 		</form>
 		
 	

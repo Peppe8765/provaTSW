@@ -23,7 +23,7 @@ EventoBean ev = new EventoBean();
 <meta charset="UTF-8">
 <title>Ticket S Eventi</title>
 </head>
-<link rel="stylesheet" href="Eventi.css" >
+<link rel="stylesheet" href="Home2.css" >
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <body>

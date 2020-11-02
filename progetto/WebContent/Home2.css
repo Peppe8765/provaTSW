@@ -4,7 +4,7 @@
 }
 body {
 	font-family: "Comic Sans MS", Serif;
-	/*background: rgba(191, 255, 0, 0.4);*/
+	background: rgba(191, 0, 255, 0.4);
 	margin: 0;
 	overflox-x: hidden;
 }
@@ -58,12 +58,12 @@ li a:hover:not(.active) {
 	color: white;
 }
 
-/*.sticky {
+.sticky {
   position: fixed;
   top: 0;
   width: 100%;
 }
-
+/*
 .dropdown-content {
   display: none;
   position: absolute;
@@ -325,6 +325,9 @@ div.desc {
 .carrello, .pagamento {
 	margin: auto;
 }
+.carrello h2 {
+	text-align: center;
+}
 .pagamento {
   	border: 1px solid #ccc;
 	margin-top: 50px;
@@ -332,8 +335,8 @@ div.desc {
   	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   	margin-bottom: 25px;
 }
-.pagamento h2, .rettangolicar, .buttoncinocar, .labelcar {
-	margin-left: 30%;
+.pagamento {
+	
 }
 table, td, th .carrello{  
 	margin-top: 20px;
