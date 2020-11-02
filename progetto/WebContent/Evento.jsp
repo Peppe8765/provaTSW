@@ -1,3 +1,6 @@
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.nio.charset.CodingErrorAction"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="it.progetto.model.TicketBean"%>
 <%@page import="java.util.Collection"%>
@@ -7,18 +10,20 @@
 <%
 Collection<TicketBean> ticketEventoC = (Collection<TicketBean>)request.getAttribute("ticketEventoC");
 EventoBean eventoS = (EventoBean)request.getAttribute("eventoS");
-String eventoId = request.getParameter("idEvent");
+String idEvent = request.getParameter("idEvent");
+
 
 
 
 if(eventoS == null && ticketEventoC == null) {
-	response.sendRedirect(response.encodeRedirectURL("./EventoServlet?IdEvent=" + eventoId));
+	response.sendRedirect(response.encodeRedirectURL("./EventoServlet?IdEvent=" + idEvent));
 	return;
 }
 
 
 TicketBean tk = new TicketBean();
 
+ArrayList<Integer> ids = new ArrayList<Integer>(); 
 %> 
     
     
@@ -27,37 +32,41 @@ TicketBean tk = new TicketBean();
 <html>
 <head>
 <meta charset="UTF-8">
+
+<link href="ProductStyle.css" rel="stylesheet" type="text/css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function premi() {
+	$('#button').click(function() {
+		$.ajax({
+			"type": "POST",
+			"data": "param=<%= tk.getCodiceBiglietto()%>",
+			"url": "./Provajson",
+			"success": function(risposta) {
+				$("#poo").html(risposta);
+			}
+		});
+	});
+});
+</script>
+
+
+
 <title><%=eventoS.getTitolo() %></title>
 </head>
-<link rel="stylesheet" href="Evento.css" >
-<script src='https://kit.fontawesome.com/a076d05399.js'></script>
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <body>
 
-
-
-<ul class= "NavBar1" id= "myNavBar1">
-  	<li><a class= "sinistra active" href="#home">HOME</a></li>
-  	<li><a class= "sinistra" href="#stadi">STADI</a></li>
-  	<li><a class= "sinistra" href="#biglietti">BIGLIETTI</a></li>
- 	<li><a class= "sinistra" href="#about">ABOUT</a>
- 		<a href="javascript:void(0);" class="icon" onclick="myFunction()"><b>&#9776;</b></a></li>
-  	<li><a class= "destra" href="#carrello" data-toggle="tooltip" data-placement="left" title= "CARRELLO"><i class='fas fa-shopping-cart'></i></a></li>
-  	<li><a class= "destra" href="#login" data-toggle="tooltip" data-placement="left" title="LOGIN"><i class='fas fa-user-alt'></i></a></li>
-</ul>
-
-	
+	<div>Navbar</div>
 	
 	<h1><%=eventoS.getTitolo() %></h1>
 	
 	
 	
-		<%
-	String message = (String)request.getAttribute("messageEv");
-	if(message != null && !message.equals("")) {
-%>
-	<p style="color: green;"><%=message %></p>
-<%}%>
+
+	<p id="message" style="color: green;"></p>
+
 	
 	
 	<div>
@@ -77,13 +86,17 @@ TicketBean tk = new TicketBean();
 	
 <%
 	Iterator<?> it = ticketEventoC.iterator();
-
+	int codiceBiglietto;
 	while(it.hasNext()){
 		tk = (TicketBean)it.next();
-
+		codiceBiglietto = tk.getCodiceBiglietto();
+		
+		ids.add(codiceBiglietto);
+		
 %>	
+
 		<tr>
-			<td><%=tk.getCodiceBiglietto() %></td>
+			<td><%=codiceBiglietto%></td>
 			<td><%=tk.getSettore() %></td>
 			<td><%=tk.getQuantità() %></td>
 			<td><%=tk.getEventoECodiceId() %></td>
@@ -91,11 +104,20 @@ TicketBean tk = new TicketBean();
 			<td><%=eventoS.getDataEvento() %></td>
 			<td><%=eventoS.getStadioNome() %></td>
 			<td><%=tk.getCosto() %></td>
-			<td><a href="<%=response.encodeURL("EventoServlet?action=addCart&id=" + tk.getCodiceBiglietto())%>">Aggiungi al carrello</a></td>
+			<td><button id="button" onclick="premi()">Aggiungi al carrello</button></td>
+			
+			
 		</tr>
+		
 <%} %>
 
 	</table>
+	<script type="text/javascript">
+		var ids = [<%= ids%>]
+		console.log(ids);
+	</script>
 	</div>
+	
 </body>
+
 </html>

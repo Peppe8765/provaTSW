@@ -38,12 +38,20 @@ public class EventoServlet extends HttpServlet {
 		
 		String idEvent = request.getParameter("idEvent");
 		System.out.println(idEvent);
+		String eventoId = "";
+		
+		if(idEvent != null) {
+			eventoId = idEvent;
+			request.setAttribute("eventoId", eventoId);
+		}
+		
+		
 		
 		EventoBean eventoS = (EventoBean)request.getSession().getAttribute("eventoS");
 
 		if(eventoS == null) {
 			try {
-				eventoS = eModel.doRetrieveByKey(idEvent);
+				eventoS = eModel.doRetrieveByKey(eventoId);
 				System.out.println();
 			}catch (SQLException e) {
 				e.printStackTrace();
@@ -53,7 +61,7 @@ public class EventoServlet extends HttpServlet {
 		
 		if(tC == null) {
 			try {
-				tC = tModel.doRetrieveAllByEvent(idEvent);
+				tC = tModel.doRetrieveAllByEvent(eventoId);
 			}catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -61,32 +69,8 @@ public class EventoServlet extends HttpServlet {
 		}
 		
 		
-		@SuppressWarnings("unchecked")
-		Cart<TicketBean> cart = (Cart<TicketBean>)request.getSession().getAttribute("carrello");
-		if(cart == null) {
-			cart = new Cart<TicketBean>();
-			request.getSession().setAttribute("carrello", cart);
-		}
-		
-		String action = request.getParameter("action");
-		
-		try {
-			if(action != null) {
-				if(action.equals("addCart")) {
-					String id = request.getParameter("id");
-					System.out.println(id);
-					TicketBean ticket = tModel.doRetrieveByKey(id);
-					if(ticket != null && !ticket.isEmpty()) {
-						cart.addItem(ticket);
-						request.setAttribute("messageEv", "Ticket " + ticket.getCodiceBiglietto() + " added to cart");
-						request.setAttribute("carrello", cart);
-					}
-				}
-			}
-		}catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
+
+
 		
 		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/Evento.jsp");
 		dispatcher.forward(request, response);
