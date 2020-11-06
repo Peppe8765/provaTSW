@@ -34,6 +34,9 @@ EventoBean event = new EventoBean();
 
 <link href="ProductStyle.css" rel="stylesheet" type="text/css">
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
 <title>Pagina dei biglietti</title>
 </head>
 <body>
@@ -46,8 +49,10 @@ EventoBean event = new EventoBean();
 	if(message != null && !message.equals("")) {
 %>
 	<p style="color: green;"><%=message %></p>
+	
 <%}%>
-
+	<p id="ms" style="color: green;"></p>
+	
 	<div>
 		<table>
 			<tr>
@@ -88,7 +93,7 @@ EventoBean event = new EventoBean();
 				<td><%=event.getStadioNome()%></td>
 				<td><%=tbean.getCosto() %></td>
 				<td><a href="<%=response.encodeURL("BigliettiServlet?action=addCart&id=" + tbean.getCodiceBiglietto()) %>">Aggiungi al carrello</a></td>
-				<td><button type ="button" onclick=""> Aggiungi</button></td>
+				<td><button type ="button" onclick='$.ajax({"type": "POST","data": "param=<%=tbean.getCodiceBiglietto()%>","url": "./Provajson","success": function(risposta) { $("#ms").html(risposta);}});'> Aggiungi al carrello</button></td>
 			</tr>	
 	<%} %>		
 

@@ -22,7 +22,7 @@ if(eventoS == null && ticketEventoC == null) {
 
 
 TicketBean tk = new TicketBean();
-
+tk.setCodiceBiglietto(1);
 ArrayList<Integer> ids = new ArrayList<Integer>(); 
 %> 
     
@@ -37,20 +37,7 @@ ArrayList<Integer> ids = new ArrayList<Integer>();
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-<script type="text/javascript">
-$(document).ready(function premi() {
-	$('#button').click(function() {
-		$.ajax({
-			"type": "POST",
-			"data": "param=<%= tk.getCodiceBiglietto()%>",
-			"url": "./Provajson",
-			"success": function(risposta) {
-				$("#poo").html(risposta);
-			}
-		});
-	});
-});
-</script>
+
 
 
 
@@ -62,7 +49,7 @@ $(document).ready(function premi() {
 	
 	<h1><%=eventoS.getTitolo() %></h1>
 	
-	
+
 	
 
 	<p id="message" style="color: green;"></p>
@@ -104,8 +91,7 @@ $(document).ready(function premi() {
 			<td><%=eventoS.getDataEvento() %></td>
 			<td><%=eventoS.getStadioNome() %></td>
 			<td><%=tk.getCosto() %></td>
-			<td><button id="button" onclick="premi()">Aggiungi al carrello</button></td>
-			
+			<td><button id="button" onclick='$.ajax({"type": "POST","data": "param=<%=tk.getCodiceBiglietto()%>","url": "./Provajson","success": function(risposta) { $("#message").html(risposta);}});'>Aggiungi al carrello</button></td>
 			
 		</tr>
 		
@@ -117,6 +103,20 @@ $(document).ready(function premi() {
 		console.log(ids);
 	</script>
 	</div>
+	
+	<script>
+		function myFunction() {
+			$.ajax({
+				"type": "POST",
+				"data": "param=<%=tk.getCodiceBiglietto()%>",
+				"url": "./Provajson",
+				"success": function (risposta) {
+					$("#message").html(data);
+				}
+			});
+		}
+		'function myFunction() {$.ajax({"type": "POST","data":"param=<%=tk.getCodiceBiglietto()%>","url": "./Provajson","success": function (risposta) {$("#message").html(data);}});}'
+	</script>
 	
 </body>
 
