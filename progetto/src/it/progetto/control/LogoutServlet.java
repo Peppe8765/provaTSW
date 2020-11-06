@@ -14,7 +14,6 @@ public class LogoutServlet extends HttpServlet {
        
     public LogoutServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -25,7 +24,7 @@ public class LogoutServlet extends HttpServlet {
 			session.invalidate();
 		}
 		
-		response.sendRedirect("Login.html");
+		response.sendRedirect("Login.jsp");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

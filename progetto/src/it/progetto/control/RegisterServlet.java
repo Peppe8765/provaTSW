@@ -30,14 +30,11 @@ public class RegisterServlet extends HttpServlet {
 		String user = request.getParameter("uname");
 		String pass1 = request.getParameter("pass");
 		String pass2 = request.getParameter("pass2");
-		
+		String mess = "";
 		UtenteModelDM utenteDM = new UtenteModelDM();
 		UtenteBean utente = new UtenteBean();
 		
-		if(pass1 != pass2) {
-			response.sendRedirect("Login.html");
-		}
-		
+		if(pass1.equals(pass2)) {
 			if(email != null && user != null && pass1 != null && pass2 != null) {
 				utente.setEmail(email);
 				utente.setNomeUtente(user);
@@ -49,11 +46,14 @@ public class RegisterServlet extends HttpServlet {
 				catch (SQLException e) {
 					e.printStackTrace();
 				}
-				
+				mess = "registrazione effettuata";
 				
 			}
-		
-			response.sendRedirect("Login.html");
+		}else {
+			mess ="registrazione fallita";
+		}
+		 	request.setAttribute("regMess", mess);
+			response.sendRedirect("Login.jsp");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
