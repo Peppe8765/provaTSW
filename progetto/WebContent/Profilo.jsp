@@ -10,6 +10,14 @@
     pageEncoding="UTF-8"%>
     
 <%
+String nomeUtente = (String)request.getSession().getAttribute("user");
+
+if(nomeUtente == null){
+	response.sendRedirect("./Login.html");
+	return;
+}
+
+
 Collection<TicketBean> tCollection = (Collection<TicketBean>)request.getAttribute("ticketsComponent");
 Collection<EventoBean> eCollection = (Collection<EventoBean>)request.getAttribute("eventsComponent");
 UtenteBean user = (UtenteBean)request.getAttribute("utente");
@@ -48,6 +56,9 @@ Blob foto = (Blob)user.getFotoProfilo();
 
 <link href="ProductStyle.css" rel="stylesheet" type="text/css">
 
+
+
+
 <title>Profilo</title>
 </head>
 <body>
@@ -70,8 +81,12 @@ Blob foto = (Blob)user.getFotoProfilo();
 			
 		</div>
 	
-		<p>Nome Utente : <%=request.getAttribute("nomeUtente") %></p>
+		<p>Nome Utente : <%=nomeUtente%></p>
 		<p>Email: <%=request.getAttribute("email") %></p>
+		
+		
+	
+		
 		
 		<button id="adminPage" type="button" onclick="location.href='./AdminPage.jsp'">Pannello di controllo</button><br><br>	
 	

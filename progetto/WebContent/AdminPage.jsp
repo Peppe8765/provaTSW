@@ -2,6 +2,20 @@
 <%@ page language="java" contentType="text/html; UTF-8"
     pageEncoding="UTF-8"%>
 <%
+Boolean adminRole = (Boolean)request.getSession().getAttribute("adminRole");
+System.out.println(adminRole);
+if((adminRole == null) || (!adminRole.booleanValue())){
+	response.sendRedirect("./Login.html");
+	return;
+}
+
+
+%>
+
+
+
+
+<%
 UtenteBean admin = (UtenteBean)request.getAttribute("Admin");
 
 if(admin == null){
