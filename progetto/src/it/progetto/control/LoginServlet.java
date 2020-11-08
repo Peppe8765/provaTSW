@@ -34,9 +34,11 @@ public class LoginServlet extends HttpServlet {
 		
 		System.out.println(userName);
 		
+		String redirectedPage ="";
+		
 		UtenteModelDM utenteDM = new UtenteModelDM();
 		UtenteBean utente = new UtenteBean();
-		String contenuto;
+		
 		try {
 			utente = utenteDM.doRetrieveByKey(userName);
 		} catch (SQLException e) {
@@ -46,7 +48,7 @@ public class LoginServlet extends HttpServlet {
 		System.out.println(utente);
 		
 		if(utente.getNomeUtente().equals(userName) && utente.getPassword().equals(password)) {
-			contenuto = "utente connesso = " + userName;
+		
 			
 			HttpSession oldSession = request.getSession(false);
 			if(oldSession != null) {
@@ -54,22 +56,18 @@ public class LoginServlet extends HttpServlet {
 			}
 			
 			HttpSession currentSession = request.getSession();
-			currentSession.setAttribute("user", userName);
+			currentSession.setAttribute("user", userName);	
+			currentSession.setAttribute("adminRole", false);
 			currentSession.setMaxInactiveInterval(60*60); // 60  minuti di sessione 
 			
-			response.sendRedirect("Success.jsp");
+			redirectedPage = "/Profilo.jsp";
 		}
 		else {
-			contenuto = "utente errato";
+			redirectedPage = "/Login.html";
 		}
 		
-		out.println("<html>"
-				+ "<body>"
-				+ "<h1>"+ contenuto +"</h1>"
-				+ "<br>"
-				+ "</body>"
-				+ "</html>");
 		
+		response.sendRedirect(request.getContextPath() + redirectedPage);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

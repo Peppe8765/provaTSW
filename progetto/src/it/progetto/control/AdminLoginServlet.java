@@ -36,11 +36,13 @@ public class AdminLoginServlet extends HttpServlet {
 		int codiceAdmin = Integer.parseInt(codiceA);
 		PrintWriter out = response.getWriter();
 		
+		String redirectedPage="";
+		
 		System.out.println(userName);
 		
 		UtenteModelDM utenteDM = new UtenteModelDM();
 		UtenteBean utente = new UtenteBean();
-		String contenuto;
+
 		try {
 			utente = utenteDM.doRetrieveByKey(userName);
 		} catch (SQLException e) {
@@ -50,7 +52,7 @@ public class AdminLoginServlet extends HttpServlet {
 		System.out.println(utente);
 		
 		if(utente.getNomeUtente().equals(userName) && utente.getPassword().equals(password) && utente.getCodiceAdmin() == codiceAdmin) {
-			contenuto = "utente connesso = " + userName;
+		
 			
 			HttpSession oldSession = request.getSession(false);
 			if(oldSession != null) {
@@ -59,20 +61,23 @@ public class AdminLoginServlet extends HttpServlet {
 			
 			HttpSession currentSession = request.getSession();
 			currentSession.setAttribute("user", userName);
+			
+			if(utente.getCodiceAdmin() != -1) {
+				currentSession.setAttribute("adminRole", true);
+			}
+			else {
+				currentSession.setAttribute("adminRole", false);
+			}
+			
 			currentSession.setMaxInactiveInterval(60*60); // 60  minuti di sessione 
 			
-			response.sendRedirect("Success.jsp");
+			redirectedPage = "/Profilo.jsp";
 		}
 		else {
-			contenuto = "utente errato";
+			redirectedPage = "/Login.html";
 		}
 		
-		out.println("<html>"
-				+ "<body>"
-				+ "<h1>"+ contenuto +"</h1>"
-				+ "<br>"
-				+ "</body>"
-				+ "</html>");
+		response.sendRedirect(request.getContextPath() + redirectedPage);
 		
 	}
 
