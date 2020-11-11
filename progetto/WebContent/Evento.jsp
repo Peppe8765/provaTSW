@@ -33,7 +33,8 @@ ArrayList<Integer> ids = new ArrayList<Integer>();
 <head>
 <meta charset="UTF-8">
 
-<link href="ProductStyle.css" rel="stylesheet" type="text/css">
+<link href="Home2.css" rel="stylesheet" type="text/css">
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -45,7 +46,27 @@ ArrayList<Integer> ids = new ArrayList<Integer>();
 </head>
 <body>
 
-	<div>Navbar</div>
+	
+<nav>
+	<div class="logo">
+		<a href="HomePageView.html">Ticket S</a>
+	</div>
+
+	<ul class= "navBar" id= "myNavBar1">
+  		<li><a href="Stadi.jsp">STADI</a></li>
+  		<li><a href="Eventi.jsp">EVENTI</a></li>
+  		<li><a href="Biglietti.jsp">BIGLIETTI</a></li>
+  		<li><a href="Login.html" data-toggle="tooltip" data-placement="left" title="LOGIN"><i class='fas fa-user-alt'></i></a></li>
+  		<li><a href="Carrello.jsp" data-toggle="tooltip" data-placement="left" title= "CARRELLO"><i class='fas fa-shopping-cart'></i></a></li>
+  		
+	</ul>
+	<div class="burger">
+		<div class="line1"></div>
+		<div class="line2"></div>
+		<div class="line3"></div>
+	</div>
+</nav>
+	
 	
 	<h1><%=eventoS.getTitolo() %></h1>
 	
@@ -118,6 +139,7 @@ ArrayList<Integer> ids = new ArrayList<Integer>();
 		'function myFunction() {$.ajax({"type": "POST","data":"param=<%=tk.getCodiceBiglietto()%>","url": "./Provajson","success": function (risposta) {$("#message").html(data);}});}'
 	</script>
 	
+	<script src="NavBar.js"></script>
 </body>
 
 </html>

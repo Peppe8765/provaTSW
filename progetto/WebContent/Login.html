@@ -4,60 +4,98 @@
 <meta charset="UTF-8">
 <title>Test per il form di login</title>
 </head>
+<link rel="stylesheet" href="Home2.css">
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <body>
-	<h1> Pagina di test per il form di login </h1>
+
+
+<!-- Navigation Bar -->
+
+<nav>
+	<div class="logo">
+		<a href="HomePageView.html">Ticket S</a>
+	</div>
+
+	<ul class= "navBar" id= "myNavBar1">
+  		<li><a href="Stadi.jsp">STADI</a></li>
+  		<li><a href="Eventi.jsp">EVENTI</a></li>
+  		<li><a href="Biglietti.jsp">BIGLIETTI</a></li>
+  		<li><a href="Login.html" data-toggle="tooltip" data-placement="left" title="LOGIN"><i class='fas fa-user-alt'></i></a></li>
+  		<li><a href="Carrello.jsp" data-toggle="tooltip" data-placement="left" title= "CARRELLO"><i class='fas fa-shopping-cart'></i></a></li>
+  		
+	</ul>
+	<div class="burger">
+		<div class="line1"></div>
+		<div class="line2"></div>
+		<div class="line3"></div>
+	</div>
+</nav>
+
 	
-	<div class="scelta">
-		<button>Registrazione</button>
-		<button>Login</button>
-		<button>Admin Login</button>
+	<div class="scelta col-8 col-s-10">
+		<button class="tablinks button" onclick="openCitylog(event, 'registrazione')">Registrazione</button>
+		<button class="tablinks button" onclick="openCitylog(event, 'login')" id="defaultOpen">Login</button>
+		<button class="tablinks button" onclick="openCitylog(event, 'loginAdmin')">Admin Login</button>
 	</div>
 	
-
-	<p style="color: green;"></p>
 	
-
-	
-
-	
-	<div class="registrazione">
-		<form action="RegisterServlet" method="post">
-			<label for="email">Email</label><br>
-			<input type="email" id="email" name="email" required><br>
+	<div id="registrazione" class="tabcontentlog col-6 col-s-10">
+		<form action="RegisterServlet" method="post" name="formReg" onsubmit="formValLog()">
+			<label for="email">Email:</label><br>
+			<input class="rettangolilog" type="email" id="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"><br>
+			<p id="validEmailReg"></p>
 			<label for="uname">Nome utente:</label><br>
-			<input type="text" id="uname" name="uname" required><br>
+			<input class="rettangolilog" type="text" id="uname" name="uname" pattern=".{8,}"><br>
+			<p id="validUnameReg"></p>
 			<label for="pass">Password:</label><br>
-			<input type="password" id="pass" name="pass" required><br>
-			<label for="pass2">Ripeti la Password</label><br>
-			<input type="password" id="pass2" name="pass2"required><br>
-			
-			<input type="submit" value="Invia">
+			<input class="rettangolilog" type="password" id="pass" name="pass" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"><br>
+			<p id="validPassReg"></p>
+			<label for="pass2">Ripeti la Password:</label><br>
+			<input class="rettangolilog" type="password" id="pass2" name="pass" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"><br>
+			<p id="validRPassReg"></p>
+			<p id="error"></p>
+			<input class="buttoncinolog" type="submit" value="Invia" >
 		</form>		
 	</div>
 	
 	
-	<div class="login">
-		<form action="LoginServlet" method="post">
+	
+	<div id="login" class="tabcontentlog col-6 col-s-10">
+		<form action="LoginServlet" method="post" name="formLog">
 			<label for="uname">Nome utente:</label><br>
-			<input type="text" id="uname" name="uname" required><br>
+			<input class="rettangolilog" type="text" id="uname" name="uname" pattern=".{8,}" required><br>
+			<p id="validUnameLog"></p>
 			<label for="pass">Password:</label><br>
-			<input type="password" id="pass" name="pass" required><br>
-			<input type="submit" value="Login">
+			<input class="rettangolilog" type="password" id="pass" name="pass" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required><br>
+			<p id="validPassLog"></p>
+			
+			<input class="buttoncinolog" type="submit" value="Login">
 		</form>
 		
 	</div>
 	
 	
-	<div class="loginAdmin">
-		<form action="AdminLoginServlet" method="post">
-		<label for="uname">Nome utente:</label><br>
-			<input type="text" id="uname" name="uname" required><br>
-			<label for="pass">Password:</label><br>
-			<input type="password" id="pass" name="pass" required><br>
-			<label for="codiceAdmin"> Codice di accesso Admin</label><br>
-			<input type="number" id="codiceAdmin" name="codiceAdmin" min = 0  max = 999999 required><br>
-			<input type="submit" value="Login">
+	
+	<div id="loginAdmin" class="tabcontentlog col-6 col-s-10">
+		<form action="AdminLoginServlet" method="post" name="formLogA" onsubmit="return alert()">
+			<label for="uname">Nome utente Admin:</label><br>
+			<input class="rettangolilog" type="text" id="uname" name="uname" required><br>
+			<p id="validUnameLogA"></p>
+			<label for="pass">Password Admin:</label><br>
+			<input class="rettangolilog" type="password" id="pass" name="pass" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required><br>
+			<p id="validPassLogA"></p>
+			<label for="codiceAdmin"> Codice di accesso Admin:</label><br>
+			<input class="rettangolilog" type="number" id="codiceAdmin" name="codiceAdmin" required><br>
+			<p id="validCodLogA"></p>
+			
+			<input class="buttoncinolog" type="submit" value="Login">
 		</form>
 	</div>
+
+<script src="FormValLog2.js"></script>
+<script src="AdminPage.js"></script>
+<script src="NavBar.js"></script>
+
 </body>
 </html>

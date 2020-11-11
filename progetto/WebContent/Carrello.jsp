@@ -4,6 +4,13 @@
 
 
 <%
+String nomeUtente = (String)request.getSession().getAttribute("user");
+System.out.println(nomeUtente);
+if(nomeUtente == null){
+	response.sendRedirect("./Login.html");
+	return;
+}
+
 
 	Cart<TicketBean> cart = (Cart<TicketBean>)request.getAttribute("carrello");
 	Collection<EventoBean> eC = (Collection<EventoBean>)request.getAttribute("eC");
@@ -33,17 +40,38 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<link href="ProductStyle.css" rel="stylesheet" type="text/css">
+	<link href="Home2.css" rel="stylesheet" type="text/css">
+	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 	<title>Carrello</title>
 </head>
 <body>
+
+<nav>
+	<div class="logo">
+		<a href="HomePageView.html">Ticket S</a>
+	</div>
+
+	<ul class= "navBar" id= "myNavBar1">
+  		<li><a href="Stadi.jsp">STADI</a></li>
+  		<li><a href="Eventi.jsp">EVENTI</a></li>
+  		<li><a href="Biglietti.jsp">BIGLIETTI</a></li>
+  		<li><a href="Login.html" data-toggle="tooltip" data-placement="left" title="LOGIN"><i class='fas fa-user-alt'></i></a></li>
+  		<li><a href="Carrello.jsp" data-toggle="tooltip" data-placement="left" title= "CARRELLO"><i class='fas fa-shopping-cart'></i></a></li>
+  		
+	</ul>
+	<div class="burger">
+		<div class="line1"></div>
+		<div class="line2"></div>
+		<div class="line3"></div>
+	</div>
+</nav>
+
 	<h1>Carrello e pagamento</h1>
 
-	<div>
-		<p>Qua ci va la Navbar</p>
-	</div>
 	
-	<div>
+	
+
+		<div class="carrello col-8 col-s-10">
 		<h2> Carrello</h2>
 		
 		
@@ -51,7 +79,8 @@
 		
 		
 		<a href="<%=response.encodeURL("CartControl?action=clearCart")%>">svuota carrello</a>
-		<table>
+		
+		<table id="carrellotable">
 			<tr>
 				<th>Codice Biglietto</th>
 				<th>Settore</th>
@@ -124,7 +153,7 @@
 
 
 
-	<div>
+		<div class="pagamento col-4 col-s-8">
 	
 	<%
 	String messageP = (String)request.getAttribute("messageP");
@@ -135,21 +164,23 @@
 	
 	
 		<h2>Pagamento</h2>
-		<form action="<%=response.encodeURL("CartControl")%>" method="GET">
+		<form action="<%=response.encodeURL("CartControl")%>" method="GET" id="formCar" name="formCar" onsubmit="funzione()">
 			<input type="hidden" name="action" value="payment">
-			<label for="Indirizzo">Indirizzo:</label><br>
-			<input type="text" id="Indirizzo" name="Indirizzo" placeholder="Via/Viale" maxlength="100" required><br>
-			<label for="Destinatario">Destinatario:</label><br>
-			<input type="text" id="Destinatario" name="Destinatario" placeholder="Nome Cognome" maxlength="50" required><br>
-			<label for="Telefono">Telefono:</label><br>
-			<input type="text" id="Telefono" name="Telefono" placeholder="000 0000000" min="0000000000" maxlength="10" required><br>
-	
-			<input type = "submit" value = "Acquista">
+			<label class="labelcar" for="Indirizzo">Indirizzo:</label><br>
+			<input class="rettangoli rettangolicar" type="text" id="Indirizzo" name="Indirizzo" placeholder="Via/Viale" required><br>
+			<label class="labelcar" for="Destinatario">Destinatario:</label><br>
+			<input class="rettangoli rettangolicar" type="text" id="Destinatario" name="Destinatario" placeholder="Nome Cognome" required><br>
+			<label class="labelcar" for="Telefono">Telefono:</label><br>
+			<input class="rettangoli rettangolicar" type="text" id="Telefono" name="Telefono" placeholder="000 0000000" required><br>
+			<p id="validtel"></p>
+			<input class="buttoncino buttoncinocar" type="submit" value="Acquista" >
 		</form>
 		
 	
 	</div>
 
+<script src="FormValCar2.js"></script>
+<script src="NavBar.js"></script>
 
 </body>
 </html>

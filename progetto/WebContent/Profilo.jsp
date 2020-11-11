@@ -54,17 +54,36 @@ Blob foto = (Blob)user.getFotoProfilo();
 <head>
 <meta charset="UTF-8">
 
-<link href="ProductStyle.css" rel="stylesheet" type="text/css">
-
-
-
+<link href="Home2.css" rel="stylesheet" type="text/css">
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 
 <title>Profilo</title>
 </head>
 <body>
 
+<nav>
+<div class="logo">
+		<a href="HomePageView.html">Ticket S</a>
+	</div>
+
+	<ul class= "navBar" id= "myNavBar1">
+  		<li><a href="Stadi.jsp">STADI</a></li>
+  		<li><a href="Eventi.jsp">EVENTI</a></li>
+  		<li><a href="Biglietti.jsp">BIGLIETTI</a></li>
+  		<li><a href="Login.html" data-toggle="tooltip" data-placement="left" title="LOGIN"><i class='fas fa-user-alt'></i></a></li>
+  		<li><a href="Carrello.jsp" data-toggle="tooltip" data-placement="left" title= "CARRELLO"><i class='fas fa-shopping-cart'></i></a></li>
+  		
+	</ul>
+	<div class="burger">
+		<div class="line1"></div>
+		<div class="line2"></div>
+		<div class="line3"></div>
+	</div>
+</nav>
+
+
 <h1>Profilo</h1>
-	<div>Navbar</div>
+
 
 	<div>
 		<div>
@@ -99,7 +118,7 @@ Blob foto = (Blob)user.getFotoProfilo();
 	
 	
 	<div>
-		<h2>Cronologia bigietti acquistati</h2>
+		<h2>Cronologia biglietti acquistati</h2>
 		
 		<table>
 			<tr>

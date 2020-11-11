@@ -32,7 +32,9 @@ EventoBean event = new EventoBean();
 <head>
 <meta charset="UTF-8">
 
-<link href="ProductStyle.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="Home2.css" >
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -40,29 +42,45 @@ EventoBean event = new EventoBean();
 <title>Pagina dei biglietti</title>
 </head>
 <body>
-	<div>Qui ci va la navbar</div>
+	
+<nav>
+	<div class="logo">
+		<a href="HomePageView.html">Ticket S</a>
+	</div>
 
-	<h1>Biglitti in vendita</h1>
+	<ul class= "navBar" id= "myNavBar1">
+  		<li><a href="Stadi.jsp">STADI</a></li>
+  		<li><a href="Eventi.jsp">EVENTI</a></li>
+  		<li><a href="Biglietti.jsp">BIGLIETTI</a></li>
+  		<li><a href="Login.html" data-toggle="tooltip" data-placement="left" title="LOGIN"><i class='fas fa-user-alt'></i></a></li>
+  		<li><a href="Carrello.jsp" data-toggle="tooltip" data-placement="left" title= "CARRELLO"><i class='fas fa-shopping-cart'></i></a></li>
+  		
+	</ul>
+	<div class="burger">
+		<div class="line1"></div>
+		<div class="line2"></div>
+		<div class="line3"></div>
+	</div>
+</nav>
+	
+<div class="biglietti col-10 col-s-12">
+	<h1 class="titolo-biglietti">Biglietti in vendita</h1>
 
 	<%
 	String message = (String)request.getAttribute("message");
 	if(message != null && !message.equals("")) {
 %>
-	<p style="color: green;"><%=message %></p>
-	
+	<p class="titolo-biglietti" style="color: green;"><%=message %></p>
 <%}%>
-	<p id="ms" style="color: green;"></p>
+
 	
-	<div>
-		<table>
+		<table id="biglietti">
 			<tr>
 				<th>Codice Biglietto</th>
-				<th>Settore</th>
-				<th>Quantità</th>
-				<th>Codice ID evento</th>
-				<th>Nome evento</th>
+				<th>Evento</th>
+				<th>Stadio e Settore</th>
 				<th>Data</th>
-				<th>Stadio</th>
+				<th>Biglietti rimanenti</th>
 				<th>Costo</th>
 			</tr>
 		
@@ -84,15 +102,15 @@ EventoBean event = new EventoBean();
 				itEv = ev.iterator();
 	%>				
 			<tr>
-				<td><%=tbean.getCodiceBiglietto() %></td>
-				<td><%=tbean.getSettore() %></td>
-				<td><%=tbean.getQuantità() %></td>
-				<td><%=tbean.getEventoECodiceId() %></td>
-				<td><%=event.getTitolo()%></td>
+				<td>Codice biglietto: <%=tbean.getCodiceBiglietto() %></td>
 				<td><%=event.getDataEvento()%></td>
-				<td><%=event.getStadioNome()%></td>
-				<td><%=tbean.getCosto() %></td>
-				<td><a href="<%=response.encodeURL("BigliettiServlet?action=addCart&id=" + tbean.getCodiceBiglietto()) %>">Aggiungi al carrello</a></td>
+				<td><%=event.getTitolo()%></td>
+				<td><%=event.getStadioNome()%>
+				<%=tbean.getSettore() %></td>
+				<td><%=event.getDataEvento()%></td>
+				<td>Biglietti rimanenti: <%=tbean.getQuantità() %></td>
+				<td>Costo: <%=tbean.getCosto() %></td>
+				<td><a href="<%=response.encodeURL("BigliettiServlet?action=addCart&id=" + tbean.getCodiceBiglietto()) %>"><button class="buttoncino" id="buttoncinobig" type ="button" onclick=""> Aggiungi</button></a></td>
 				<td><button type ="button" onclick='$.ajax({"type": "POST","data": "param=<%=tbean.getCodiceBiglietto()%>","url": "./Provajson","success": function(risposta) { $("#ms").html(risposta);}});'> Aggiungi al carrello</button></td>
 			</tr>	
 	<%} %>		
@@ -101,7 +119,37 @@ EventoBean event = new EventoBean();
 	
 
 	</div>
+<script src="NavBar.js"></script>
+<script>
+//Navigation Bar
+function myFunction() {
+	  var x = document.getElementById("myNavBar1");
+	  if (x.className === "navBar") {
+	    x.className += " responsive";
+	  } else {
+	    x.className = "navBar";
+	  }
+	}
 
+
+//When the user scrolls the page, execute myFunction
+window.onscroll = function() {stickyFunction()};
+
+
+var navBar = document.getElementById("myNavBar1");
+
+var sticky = navBar.offsetTop;
+
+// Add the sticky class to the navBar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+function stickyFunction() {
+  if (window.pageYOffset >= sticky) {
+    navBar.classList.add("sticky")
+  } else {
+    navBar.classList.remove("sticky");
+  }
+}
+
+</script>
 
 
 </body>

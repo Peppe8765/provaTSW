@@ -20,11 +20,35 @@ StadioBean stadio = new StadioBean();
 <head>
 <meta charset="UTF-8">
 
-<link href="ProductStyle.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="Home2.css" >
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Stadi</title>
 </head>
 <body>
+	
+		
+<nav>
+	<div class="logo">
+		<a href="HomePageView.html">Ticket S</a>
+	</div>
+
+	<ul class= "navBar" id= "myNavBar1">
+  		<li><a href="Stadi.jsp">STADI</a></li>
+  		<li><a href="Eventi.jsp">EVENTI</a></li>
+  		<li><a href="Biglietti.jsp">BIGLIETTI</a></li>
+  		<li><a href="Login.html" data-toggle="tooltip" data-placement="left" title="LOGIN"><i class='fas fa-user-alt'></i></a></li>
+  		<li><a href="Carrello.jsp" data-toggle="tooltip" data-placement="left" title= "CARRELLO"><i class='fas fa-shopping-cart'></i></a></li>
+  		
+	</ul>
+	<div class="burger">
+		<div class="line1"></div>
+		<div class="line2"></div>
+		<div class="line3"></div>
+	</div>
+</nav>
+	
 	
 	<div>Lista degli stadi</div>
 	
@@ -62,6 +86,6 @@ StadioBean stadio = new StadioBean();
 	
 	</div>
 	
-	
+		<script src="NavBar.js"></script>
 </body>
 </html>

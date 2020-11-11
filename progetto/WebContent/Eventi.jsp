@@ -22,12 +22,35 @@ EventoBean ev = new EventoBean();
 <head>
 <meta charset="UTF-8">
 
-<link href="ProductStyle.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="Home2.css" >
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Eventi</title>
 </head>
 <body>
-	<div>Navbar</div>
+	
+<nav>
+	<div class="logo">
+		<a href="HomePageView.html">Ticket S</a>
+	</div>
+
+	<ul class= "navBar" id= "myNavBar1">
+  		<li><a href="Stadi.jsp">STADI</a></li>
+  		<li><a href="Eventi.jsp">EVENTI</a></li>
+  		<li><a href="Biglietti.jsp">BIGLIETTI</a></li>
+  		<li><a href="Login.html" data-toggle="tooltip" data-placement="left" title="LOGIN"><i class='fas fa-user-alt'></i></a></li>
+  		<li><a href="Carrello.jsp" data-toggle="tooltip" data-placement="left" title= "CARRELLO"><i class='fas fa-shopping-cart'></i></a></li>
+  		
+	</ul>
+	<div class="burger">
+		<div class="line1"></div>
+		<div class="line2"></div>
+		<div class="line3"></div>
+	</div>
+</nav>
+
+
 	
 	<h1> Lista degli eventi </h1>
 	
@@ -49,7 +72,7 @@ EventoBean ev = new EventoBean();
 		%>		
 			<tr>
 				<td><%=ev.geteCodiceID() %></td>
-				<td><a href="<%=response.encodeURL("./EventStadioServlet?idEvent=" + ev.geteCodiceID())%>"><%=ev.getTitolo() %></a></td>		
+				<td><a href="<%=response.encodeURL("./EventoServlet?idEvent=" + ev.geteCodiceID())%>"><%=ev.getTitolo() %></a></td>		
 				<td><%=ev.getDataEvento() %></td>
 				<td><a href="<%=response.encodeURL("./EventStadioServlet?stadioName=" + ev.getStadioNome())%>"><%=ev.getStadioNome() %></a></td>
 			</tr>
@@ -61,6 +84,41 @@ EventoBean ev = new EventoBean();
 	
 	
 	</div>
+	
+	
+	
+	
+<script src="NavBar.js"></script>
+<script>
+//Navigation Bar
+function myFunction() {
+	  var x = document.getElementById("myNavBar1");
+	  if (x.className === "navBar") {
+	    x.className += " responsive";
+	  } else {
+	    x.className = "navBar";
+	  }
+	}
+
+
+//When the user scrolls the page, execute myFunction
+window.onscroll = function() {stickyFunction()};
+
+
+var navBar = document.getElementById("myNavBar1");
+
+var sticky = navBar.offsetTop;
+
+// Add the sticky class to the navBar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+function stickyFunction() {
+  if (window.pageYOffset >= sticky) {
+    navBar.classList.add("sticky")
+  } else {
+    navBar.classList.remove("sticky");
+  }
+}
+
+</script>
 	
 	
 </body>
