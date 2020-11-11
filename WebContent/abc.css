@@ -1,0 +1,8 @@
+pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" email
+
+pattern=".{8,}" nome utente
+
+pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" password
+
+
+https:/localhost:8443/progetto/
