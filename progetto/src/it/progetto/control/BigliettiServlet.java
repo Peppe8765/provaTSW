@@ -83,7 +83,7 @@ public class BigliettiServlet extends HttpServlet {
 
 		//request.setAttribute("carrello", cart);
 		
-		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/Biglietti.jsp");
+		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher(response.encodeURL("/Biglietti.jsp"));
 		dispatcher.forward(request, response);
 	}
 

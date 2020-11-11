@@ -40,7 +40,7 @@ public class EventiServlet extends HttpServlet {
 		}
 		
 		
-		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/Eventi.jsp");
+		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher(response.encodeURL("/Eventi.jsp"));
 		dispatcher.forward(request, response);
 		
 	}

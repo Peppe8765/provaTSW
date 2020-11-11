@@ -24,7 +24,7 @@ public class LogoutServlet extends HttpServlet {
 			session.invalidate();
 		}
 		
-		response.sendRedirect("Login.html");
+		response.sendRedirect(response.encodeRedirectURL("Login.html"));
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

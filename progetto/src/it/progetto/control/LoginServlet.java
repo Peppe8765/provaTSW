@@ -3,6 +3,7 @@ package it.progetto.control;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.Base64;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -30,7 +31,7 @@ public class LoginServlet extends HttpServlet {
 		response.setContentType("text/html");
 		String userName = request.getParameter("uname");
 		String password = request.getParameter("pass");
-		PrintWriter out = response.getWriter();
+		
 		
 		System.out.println(userName);
 		
@@ -47,7 +48,10 @@ public class LoginServlet extends HttpServlet {
 		
 		System.out.println(utente);
 		
-		if(utente.getNomeUtente().equals(userName) && utente.getPassword().equals(password)) {
+		byte[] decodedBytes = Base64.getDecoder().decode(utente.getPassword());
+		String passDB= new String(decodedBytes);
+		
+		if(utente.getNomeUtente().equals(userName) && passDB.equals(password)) {
 		
 			
 			HttpSession oldSession = request.getSession(false);

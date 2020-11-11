@@ -98,7 +98,7 @@ public class ProfiloServlet extends HttpServlet {
 		}
 		
     	
-    	RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/Profilo.jsp");
+    	RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher(response.encodeURL("/Profilo.jsp"));
     	dispatcher.forward(request, response);
 	}
 
@@ -164,7 +164,7 @@ public class ProfiloServlet extends HttpServlet {
 			
 		}
 		
-		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/Profilo.jsp");
+		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher(response.encodeURL("/Profilo.jsp"));
     	dispatcher.forward(request, response);
 	}
 

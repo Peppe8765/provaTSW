@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import it.progetto.model.UtenteBean;
 import it.progetto.model.UtenteModelDM;
 
+import java.util.Base64;
+
 
 @WebServlet("/AdminServlet")
 public class AdminServlet extends HttpServlet {
@@ -41,10 +43,17 @@ public class AdminServlet extends HttpServlet {
 		request.setAttribute("Admin", admin);
 	}
 	
+	String daCriptare = "cose a caso";
+	String encodedString = Base64.getEncoder().encodeToString(daCriptare.getBytes());
+	System.out.println(encodedString);
+	
+	byte[] decodedBytes = Base64.getDecoder().decode(encodedString);
+	String decodedString = new String(decodedBytes);
+	System.out.println(decodedString);
 	
 	
 	
-	RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/AdminPage.jsp");
+	RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher(response.encodeURL("/AdminPage.jsp"));
 	dispatcher.forward(request, response);
 	
 	}

@@ -63,7 +63,7 @@ public class IdProva extends HttpServlet {
 			request.setAttribute("ticketEventoC", tC);
 		}
 		
-		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/Evento.jsp");
+		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher(response.encodeURL("/Evento.jsp"));
 		dispatcher.forward(request, response);
 	}
 

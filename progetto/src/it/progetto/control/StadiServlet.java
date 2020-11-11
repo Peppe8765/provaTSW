@@ -40,7 +40,7 @@ public class StadiServlet extends HttpServlet {
 			request.setAttribute("stadii", sCollection);
 		}
 		
-		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/Stadi.jsp");
+		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher(response.encodeURL("/Stadi.jsp"));
 		dispatcher.forward(request, response);
 	}
 

@@ -1,8 +1,8 @@
 package it.progetto.control;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.Base64;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -34,7 +34,7 @@ public class AdminLoginServlet extends HttpServlet {
 		String password = request.getParameter("pass");
 		String codiceA = request.getParameter("codiceAdmin");
 		int codiceAdmin = Integer.parseInt(codiceA);
-		PrintWriter out = response.getWriter();
+	
 		
 		String redirectedPage="";
 		
@@ -51,7 +51,12 @@ public class AdminLoginServlet extends HttpServlet {
 		
 		System.out.println(utente);
 		
-		if(utente.getNomeUtente().equals(userName) && utente.getPassword().equals(password) && utente.getCodiceAdmin() == codiceAdmin) {
+
+		
+		byte[] decodedBytes = Base64.getDecoder().decode(utente.getPassword());
+		String passDB= new String(decodedBytes);
+		System.out.println(passDB);
+		if(utente.getNomeUtente().equals(userName) && passDB.equals(password) && utente.getCodiceAdmin() == codiceAdmin) {
 		
 			
 			HttpSession oldSession = request.getSession(false);

@@ -2,6 +2,7 @@ package it.progetto.control;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Base64;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -38,7 +39,10 @@ public class RegisterServlet extends HttpServlet {
 			if(email != null && user != null && pass1 != null && pass2 != null) {
 				utente.setEmail(email);
 				utente.setNomeUtente(user);
-				utente.setPassword(pass1);
+				
+				String encodedString = Base64.getEncoder().encodeToString(pass1.getBytes());
+				
+				utente.setPassword(encodedString);
 				
 				try{
 					utenteDM.doSave(utente);
@@ -53,7 +57,7 @@ public class RegisterServlet extends HttpServlet {
 			mess ="registrazione fallita";
 		}
 		 	request.setAttribute("regMess", mess);
-			response.sendRedirect("Login.jsp");
+			response.sendRedirect(response.encodeRedirectURL("Login.html"));
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -56,7 +56,7 @@ public class EventStadioServlet extends HttpServlet {
 			request.setAttribute("eventStadio", eventCollection);
 		}
 
-		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/Stadio.jsp");
+		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher(response.encodeURL("/Stadio.jsp"));
 		dispatcher.forward(request, response);
 	}
 
