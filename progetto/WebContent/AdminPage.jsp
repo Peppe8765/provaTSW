@@ -78,8 +78,9 @@ if(admin == null){
 
 	
 	<div id="AddStadio" class="tabcontent">
-		<form action="">
+		<form action="AdminServlet" method="get">
 			<p>Aggiungere uno stadio</p>
+			<input type="text" id="action" name="action" value="addStadio" hidden="true">
 			<label for="NomeStadio">Nome</label><br>
 			<input type="text" id="NomeStadio" name="NomeStadio" required="required"><br>
 			<label for="Nazione">Nazione</label><br>
@@ -92,94 +93,135 @@ if(admin == null){
 			<input type="number" id="Capienza" name="Capienza" required="required"><br>
 			<label for="Descrizione">Descrizione</label><br>
 			<input type="text" id="Descrizione" name="Descrizione" required="required"><br>
+			<label for="Comune">Comune</label><br>
+			<input class="rettangoli" type="text" id="Comune" name="Comune" ><br>
+			<label for="Società">Società</label><br>
+			<input class="rettangoli" type="text" id="Società" name="Società" ><br>
+			<label for="AnnoFondazione">Anno di fondazione</label><br>
+			<input class="rettangoli" type="number" id="AnnoFondazione" name="AnnoFondazione" ><br>
+			<input class="buttoncino" type="submit" value="Aggiungi">
 		</form>
 	
 	</div>
 	
 	<div id="RemoveStadio" class="tabcontent">
-		<p>Rimuovere uno stadio</p>
+		<form action="AdminServlet" method="get">
+		<input type="text" id="action" name="action" value="removeStadio" hidden="true">
+			<p>Rimuovere uno stadio</p>
+			<label for="NomeStadio">Inserire il nome dello stadio da eliminare:</label><br>
+			<input class="rettangoli" type="text" id="NomeStadio" name="NomeStadio" required="required"><br>
+			<input class="buttoncino" type="submit" value="Rimuovi"><br>
+		</form>
 	
 	
 	</div>
 	
 	<div id="AddEvent" class="tabcontent">
-		<p>Aggiungere un evento</p>
-		<label for="Titolo">Titolo</label><br>
-		<input type="text" id="Titolo" name="Titolo" required="required"><br>
-		<label for="DataEvento">Data Evento</label><br>
-		<input type="text" id="DataEvento" name="DataEvento" required="required"><br>
-		<label for="StadioEvento">Nome dello Stadio</label><br>
-		<input type="text" id="StadioEvento" name="StadioEvento" required="required"><br>
-		<p>Selezionare il tipo di evento</p>
-		<input type="radio" onclick="openCity1(evt, concerto)" id="RadioConcerto" name="Radiobutton" required="required">
-		<label for="Radiobutton1">Concerto</label><br>
-		<input type="radio" onclick="openCity1(evt, eventoSportivo)" id="RadioEventoSportivo" name="Radiobutton" required="required">
-		<label for="Radiobutton1">Evento sportivo</label><br>
+		<form action="">
+			<p>Aggiungere un evento</p>
+			<input type="text" id="action" name="action" value="addEvent" hidden="true">
+			<label for="Titolo">Titolo</label><br>
+			<input class="rettangoli" type="text" id="Titolo" name="Titolo" required="required"><br>
+			<label for="DataEvento">Data Evento</label><br>
+			<input class="rettangoli" type="text" id="DataEvento" name="DataEvento" required="required"><br>
+			<label for="StadioEvento">Nome dello Stadio</label><br>
+			<input class="rettangoli" type="text" id="StadioEvento" name="StadioEvento" required="required"><br>
+			<p>Selezionare il tipo di evento</p>
+			<input class="rettangoli" type="radio" onclick="openCity1(evt, concerto)" id="RadioConcerto" name="Radiobutton" required="required">
+			<label for="Radiobutton1">Concerto</label><br>
+			<input class="rettangoli" type="radio" onclick="openCity1(evt, eventoSportivo)" id="RadioEventoSportivo" name="Radiobutton" required="required">
+			<label for="Radiobutton1">Evento sportivo</label><br>
+		</form>
 		
 		<div id="concerto" class="tabcontent tabcontent1">
-			<p>Inserire il concerto</p>
-			<label for="Artista">Artista / Band</label><br>
-			<input type="text" id="Artista" name="Artista" required="required"><br>
-			<label for="CodiceEventoConcerto">Codice evento</label><br>
-			<input type="number" id="CodiceEventoConcerto" name="CodiceEventoConcerto" required="required"><br>
+			<form action="">
+				<p>Inserire il concerto</p>
+				<label for="Artista">Artista / Band</label><br>
+				<input class="rettangoli" type="text" id="Artista" name="Artista" required="required"><br>
+				</form>
 		</div>
-		
+			
 		<div id="eventoSportivo" class="tabcontent tabcontent1">
-			<p>Inserire l'evento sportivo</p>
-			<label for="Tipo">Tipo</label><br>
-			<input type="text" id="Tipo" name="Tipo" required="required"><br>
-			<label for="Squadra1">Squadra1</label><br>
-			<input type="text" id="Squadra1" name="Squadra1" required="required"><br>
-			<label for="Squadra2">Squadra2</label><br>
-			<input type="text" id="Squadra2" name="Squadra2" required="required"><br>
-			<label for="CodiceEventoSportivo">Codice evento</label><br>
-			<input type="number" id="CodiceEventoSportivo" name="CodiceEventoSportivo" required="required"><br>
+			<form action="">
+				<p>Inserire l'evento sportivo</p>
+				<label for="Tipo">Tipo</label><br>
+				<input class="rettangoli" type="text" id="Tipo" name="Tipo" required="required"><br>
+				<label for="Squadra1">Squadra1</label><br>
+				<input class="rettangoli" type="text" id="Squadra1" name="Squadra1" required="required"><br>
+				<label for="Squadra2">Squadra2</label><br>
+				<input class="rettangoli" type="text" id="Squadra2" name="Squadra2" required="required"><br>
+				</form>
 		</div>
 	</div>
 	
-	<div id="RemoveEvent" class="tabcontent">
-		<p>Rimuovere un evento</p>
-		
+<div id="RemoveEvent" class="tabcontent">
+		<form action="AdminServlet" method="get">
+			<p>Rimuovere un evento</p>
+			<input type="text" id="action" name="action" value="removeEvent" hidden="true">
+			<label for="CodiceEvento">Inserire il codice dell'evento da eliminare:</label><br>
+			<input class="rettangoli" type="text" id="CodiceEvento" name="CodiceEvento" required="required"><br>
+			<input class="buttoncino" type="submit" value="Rimuovi"><br>
+		</form>
+	</div>
+	
+		<div id="AddTicket" class="tabcontent">
+		<form action="AdminServlet" method="get">
+			<p>Aggiungere un biglietto</p>
+			<input type="text" id="action" name="action" value="addTicket" hidden="true">
+			<label for="Settore">Settore</label><br>
+			<input class="rettangoli" type="text" id="Settore" name="Settore" required="required"><br>
+			<label for="Costo">Costo</label><br>
+			<input class="rettangoli" type="number" id="Costo" name="Costo" required="required"><br>
+			<label for="Quantità">Quantità</label><br>
+			<input class="rettangoli" type="number" id="Quantità" name="Quantità" required="required"><br>
+			<label for="CodiceEventoBiglietto">Codice evento</label><br>
+			<input class="rettangoli" type="number" id="CodiceEventoBiglietto" name="CodiceEventoBiglietto" required="required"><br>
+			<input class="buttoncino" type="submit" value="Aggiungi"><br>
+		</form>
+	</div>
+	
+<div id="RemoveTicket" class="tabcontent">
+		<form action="AdminServlet" method="get">
+			<p>Rimuovere un biglietto</p>
+			<input type="text" id="action" name="action" value="removeTicket" hidden="true">
+			<label for="CodiceBiglietto">Inserire codice del biglietto da eliminare:</label><br>
+			<input class="rettangoli" type="number" id="CodiceBiglietto" name="CodiceBiglietto" required="required"><br>
+			<input class="buttoncino" type="submit" value="Rimuovi"><br>
+		</form>
 	
 	</div>
 	
-	<div id="AddTicket" class="tabcontent">
-		<p>Aggiungere un biglietto</p>
-		<label for="Settore">Settore</label><br>
-		<input type="text" id="Settore" name="Settore" required="required"><br>
-		<label for="Costo">Costo</label><br>
-		<input type="number" id="Costo" name="Costo:" required="required"><br>
-		<label for="Quantità">Quantità</label><br>
-		<input type="number" id="Quantità" name="Quantità" required="required"><br>
-		<label for="CodiceEventoBiglietto">Codice evento</label><br>
-		<input type="number" id="CodiceEventoBiglietto" name="CodiceEventoBiglietto" required="required"><br>
+<div id="AddAdmin" class="tabcontent">
+		<form action="AdminServlet" method="get">
+			<p>Promuovere un utente ad admin</p>
+			<input type="text" id="action" name="action" value="addAdmin" hidden="true">
+			<label for="NomeUtente">Inserire il nome dell'utente da promuovere ad admin:</label><br>
+			<input class="rettangoli" type="text" id="NomeUtente" name="NomeUtente" required="required"><br>
+			<label for="CodiceAdmin">Inserire il codice admin:</label><br>
+			<input class="rettangoli" type="number" id="CodiceAdmin" name="CodiceAdmin" required="required"><br>
+			<input class="buttoncino" type="submit" value="Promuovi"><br>
+		</form>
 	
 	</div>
 	
-	<div id="RemoveTicket" class="tabcontent">
-		<p>Rimuovere un biglietto</p>
-		
-	
-	
-	</div>
-	
-	<div id="AddAdmin" class="tabcontent">
-		<p>Aggiungere un admin</p>
-		
-	
-	
-	</div>
-	
-	<div id="RemoveAdmin" class="tabcontent">
-		<p>Rimuovere un admin</p>
-	
-	
+<div id="RemoveAdmin" class="tabcontent">
+		<form action="AdminServlet" method="get">
+			<p>Rimuovere un admin</p>
+			<input type="text" id="action" name="action" value="removeAdmin" hidden="true">
+			<label for="NomeAdmin">Inserire il nome dell'admin da declassare:</label><br>
+			<input class="rettangoli" type="text" id="NomeAdmin" name="NomeAdmin" required="required"><br>
+			<input class="buttoncino" type="submit" value="Rimuovi"><br>
+		</form>
 	</div>
 	
 	<div id="RemoveUser" class="tabcontent">
-		<p>Rimuovere un utente</p>
-	
-	
+		<form action="AdminServlet" method="get">
+			<p>Rimuovere un utente</p>
+			<input type="text" id="action" name="action" value="removeUser" hidden="true">
+			<label for="NomeUtente">Inserire il nome dell'utente da eliminare:</label><br>
+			<input class="rettangoli" type="text" id="NomeUtente" name="NomeUtente" required="required"><br>
+			<input class="buttoncino" type="submit" value="Rimuovi"><br>
+		</form>
 	</div>
 	
 	<script src="AdminPage.js"></script>
