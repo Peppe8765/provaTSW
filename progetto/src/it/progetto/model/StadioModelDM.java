@@ -103,7 +103,7 @@ public class StadioModelDM implements ObjectModel<StadioBean>{
 		PreparedStatement preparedstatement  = null;
 		
 		String insertSQL = " INSERT INTO Stadio"
-				+ "(Nome , Nazione, Città, Indirizzo, Capienza, Descrizione, Comune_CodiceID, Società_SCodiceID ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+				+ "(Nome , Nazione, Città, Indirizzo, Capienza, Descrizione, Comune_CCodiceID, Società_SCodiceID ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		try {
 			connection = DriverManagerConnectionPool.getConnection();

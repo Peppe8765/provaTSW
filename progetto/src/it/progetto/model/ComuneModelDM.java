@@ -9,6 +9,39 @@ import java.util.LinkedList;
 
 public class ComuneModelDM implements ObjectModel<ComuneBean>{
 
+	public ComuneBean doRetrieveByName(String name) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedstatement = null;
+		
+		ComuneBean comune = new ComuneBean();
+		String selectSQL = "SELECT * FROM Comune WHERE Città = ?";
+		
+		try {
+			connection = DriverManagerConnectionPool.getConnection();
+			preparedstatement = connection.prepareStatement(selectSQL);
+			preparedstatement.setString(1, name);
+			
+			System.out.println("doRetrieveByKey: " +preparedstatement.toString());
+			ResultSet rs = preparedstatement.executeQuery();
+			
+			while(rs.next()) {
+				comune.setCCodiceID(rs.getInt("CCodiceID"));
+				comune.setCittà(rs.getString("Città"));
+			}
+			
+			System.out.println(comune);
+			
+		}finally {
+			try {
+				if(preparedstatement != null)
+					preparedstatement.close();
+			}finally {
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+		return comune;
+	}
+	
 	@Override
 	public ComuneBean doRetrieveByKey(String code) throws SQLException {
 		Connection connection = null;

@@ -96,17 +96,16 @@ public class TicketModelDM implements ObjectModel<TicketBean>{
 		PreparedStatement preparedstatement = null;
 		
 		String insertSQL = "INSERT INTO Biglietto"
-				+ "(Codice_Biglietto, Settore, Costo, Quantità, Evento_ECodiceID) VALUES (?, ?, ?, ?, ?)";
+				+ "(Settore, Costo, Quantità, Evento_ECodiceID) VALUES (?, ?, ?, ?)";
 		
 		try {
 			connection = DriverManagerConnectionPool.getConnection();
 			preparedstatement = connection.prepareStatement(insertSQL);
 			
-			preparedstatement.setInt(1, object.getCodiceBiglietto());
-			preparedstatement.setString(2, object.getSettore());
-			preparedstatement.setDouble(3, object.getCosto());
-			preparedstatement.setInt(4, object.getQuantità());
-			preparedstatement.setInt(5, object.getEventoECodiceId());
+			preparedstatement.setString(1, object.getSettore());
+			preparedstatement.setDouble(2, object.getCosto());
+			preparedstatement.setInt(3, object.getQuantità());
+			preparedstatement.setInt(4, object.getEventoECodiceId());
 			
 			System.out.println("doSave: " + preparedstatement.toString());
 			preparedstatement.executeUpdate();

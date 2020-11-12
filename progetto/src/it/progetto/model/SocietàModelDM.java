@@ -9,13 +9,50 @@ import java.util.LinkedList;
 
 public class Societ‡ModelDM implements ObjectModel<Societ‡Bean>{
 
+	public Societ‡Bean doRetrieveByName(String name) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		Societ‡Bean societ‡ = new Societ‡Bean();
+		String  selectSQL = "SELECT * FROM Societ‡ WHERE Nome = ?";
+		
+		try {
+			connection = DriverManagerConnectionPool.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setString(1, name);
+			
+			System.out.println("doRetriveByKey: " +preparedStatement.toString());
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			while(rs.next()) {
+				societ‡.setNome(rs.getString("Nome"));
+				societ‡.setAnnoFondazione(rs.getInt("AnnoFondazione"));
+				societ‡.setSCodiceId(rs.getInt("SCodiceId"));
+			}
+			
+			System.out.println(societ‡);
+			
+		}finally {
+			try {
+				if(preparedStatement != null)
+					preparedStatement.close();
+			}finally {
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+		
+		
+		
+		return societ‡;
+	}
+	
 	@Override
 	public Societ‡Bean doRetrieveByKey(String code) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
 		Societ‡Bean societ‡ = new Societ‡Bean();
-		String  selectSQL = "SELECT * FROM Societ‡ WHERE SCodiceID 0 ?";
+		String  selectSQL = "SELECT * FROM Societ‡ WHERE SCodiceID = ?";
 		
 		try {
 			connection = DriverManagerConnectionPool.getConnection();
@@ -106,7 +143,7 @@ public class Societ‡ModelDM implements ObjectModel<Societ‡Bean>{
 			preparedstatement.setInt(2, object.getAnnoFondazione());
 			
 			System.out.println("doSave: " + preparedstatement.toString());
-			preparedstatement.executeQuery();
+			preparedstatement.executeUpdate();
 			
 			connection.commit();
 			
