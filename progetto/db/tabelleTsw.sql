@@ -66,15 +66,6 @@ Evento_ECodiceID int,
 PRIMARY KEY(Codice_Biglietto),
 foreign key(Evento_ECodiceID) references Evento(ECodiceID));
 
-#creazione tabella Ospite
-CREATE TABLE Ospite(
-CF char(11) not null,
-Nome varchar(255) not null,
-Concerto_ArtistaBand varchar(255) not null,
-Concerto_Evento_ECodiceID int,
-PRIMARY KEY(CF),
-foreign key(Concerto_ArtistaBand) references Concerto(ArtistaBand),
-foreign key(Concerto_Evento_ECodiceID) references Concerto(Evento_ECodiceID));
 
 #creazione tabella utente
 CREATE TABLE utente(
@@ -88,13 +79,12 @@ primary key(NomeUtente)
 
 CREATE TABLE acquista(
 utente_NomeUtente varchar(255) not null,
-Biglietto_Codice_Biglietto int auto_increment,
-primary key(utente_NomeUtente , Biglietto_Codice_Biglietto),
-foreign key(utente_NomeUtente) references utente(NomeUtente),
-foreign key(Biglietto_Codice_Biglietto) references Biglietto(Codice_Biglietto));
+Biglietto_Codice_Biglietto int ,
+primary key(utente_NomeUtente , Biglietto_Codice_Biglietto));
 
 SELECT * FROM Evento WHERE Stadio_Nome = "San Siro";
 
+insert into utente(NomeUtente, password, Email, CodiceAdmin, FotoProfilo) values("utenteP","RmFiaW8xMjM=","abc@gmail.com",444444,null);
 
 #insert into acquista(utente_NomeUtente, Biglietto_Codice_Biglietto) values ("Angelo", 1);
 #update Biglietto set quantità = quantità -1 where Codice_Biglietto = 1; 
