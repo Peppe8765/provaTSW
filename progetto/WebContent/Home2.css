@@ -474,13 +474,6 @@ div.desc {
 .tabcontent p {
 	text-transform: uppercase;
 }
-.tabcontent1 {
-  	float: left;
-  	padding: 30px 30px;
-  	width: 70%;
-  	border-left: none;
-  	height: 300px;
-}
 
 /* For mobile phones: */
 [class*="col-"] {
@@ -545,7 +538,8 @@ div.desc {
 		border-bottom: 1px solid black;
 		border-left: 1px solid black;
 		box-shadow: 2px 2px 15px black;
-		/*transition: transform 0.5s ease-in;*/
+		transition: transform 0.5s ease-out;
+		
 	}
 	.navBar a {
 	align-text: left;
@@ -556,4 +550,5 @@ div.desc {
 }
 .nav-active{
 	transform: translateX(0%);
+	transition: transform 0.5s ease-in;
 }

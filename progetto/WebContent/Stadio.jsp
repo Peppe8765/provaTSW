@@ -45,7 +45,8 @@ EventoBean event = new EventoBean();
   		<li><a href="Stadi.jsp">STADI</a></li>
   		<li><a href="Eventi.jsp">EVENTI</a></li>
   		<li><a href="Biglietti.jsp">BIGLIETTI</a></li>
-  		<li><a href="Login.html" data-toggle="tooltip" data-placement="left" title="LOGIN"><i class='fas fa-user-alt'></i></a></li>
+  		<li><a href="Login.html" data-toggle="tooltip" data-placement="left" title="LOGIN"><i class="fa fa-key"></i></a></li>
+  		<li><a href="Profilo.jsp" data-toggle="tooltip" data-placement="left" title="PROFILO"><i class='fas fa-user-alt'></i></a></li>
   		<li><a href="Carrello.jsp" data-toggle="tooltip" data-placement="left" title= "CARRELLO"><i class='fas fa-shopping-cart'></i></a></li>
   		
 	</ul>

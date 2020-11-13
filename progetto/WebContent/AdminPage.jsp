@@ -46,7 +46,8 @@ if(admin == null){
   		<li><a href="Stadi.jsp">STADI</a></li>
   		<li><a href="Eventi.jsp">EVENTI</a></li>
   		<li><a href="Biglietti.jsp">BIGLIETTI</a></li>
-  		<li><a href="Login.html" data-toggle="tooltip" data-placement="left" title="LOGIN"><i class='fas fa-user-alt'></i></a></li>
+  		<li><a href="Login.html" data-toggle="tooltip" data-placement="left" title="LOGIN"><i class="fa fa-key"></i></a></li>
+  		<li><a href="Profilo.jsp" data-toggle="tooltip" data-placement="left" title="PROFILO"><i class='fas fa-user-alt'></i></a></li>
   		<li><a href="Carrello.jsp" data-toggle="tooltip" data-placement="left" title= "CARRELLO"><i class='fas fa-shopping-cart'></i></a></li>
   		
 	</ul>
@@ -127,10 +128,10 @@ if(admin == null){
 			<label for="StadioEvento">Nome dello Stadio</label><br>
 			<input class="rettangoli" type="text" id="StadioEvento" name="StadioEvento" required="required"><br>
 			<p>Selezionare il tipo di evento</p>
-			<input class="rettangoli" type="radio" onclick="openCity1(evt, concerto)" id="RadioConcerto" name="Radiobutton" required="required">
-			<label for="Radiobutton1">Concerto</label><br>
-			<input class="rettangoli" type="radio" onclick="openCity1(evt, eventoSportivo)" id="RadioEventoSportivo" name="Radiobutton" required="required">
-			<label for="Radiobutton1">Evento sportivo</label><br>
+			<input type="radio" onclick="concerto()" id="RadioConcerto" name="Radiobutton">
+			<label for="Radiobutton">Concerto</label><br>
+			<input type="radio" onclick="eventoSportivo()" id="RadioEventoSportivo" name="Radiobutton">
+			<label for="Radiobutton">Evento sportivo</label><br>
 		</form>
 		
 		<div id="concerto" class="tabcontent tabcontent1">

@@ -12,15 +12,6 @@ function openCity(evt, cityName) {
 	  document.getElementById(cityName).style.display = "block";
 	  evt.currentTarget.className += " active";
 	}
-function openCity1(evt, cityName) {
-	  var i, tabcontent;
-	  tabcontent = document.getElementsByClassName("tabcontent1");
-	  for (i = 0; i < tabcontent.length; i++) {
-	    tabcontent[i].style.display = "none";
-	  }
-	  document.getElementById(cityName).style.display = "block";
-}
-
 function openCitylog(evt, cityName) {
 	  var i, tabcontent, tablinks;
 	  tabcontent = document.getElementsByClassName("tabcontentlog");
@@ -34,6 +25,25 @@ function openCitylog(evt, cityName) {
 	  document.getElementById(cityName).style.display = "block";
 	  evt.currentTarget.className += " active";
 	}
-
+function concerto() {
+	var x = document.getElementById("concerto");
+	var y = document.getElementById("eventoSportivo");
+	y.style.display ="none";
+	if (x.style.display == "none") {
+	  x.style.display = "block";
+	} else {
+	  x.style.display = "none";
+	}
+}
+function eventoSportivo() {
+	var x = document.getElementById("concerto");
+	var y = document.getElementById("eventoSportivo");
+	x.style.display ="none";
+	if (y.style.display == "none") {
+	  y.style.display = "block";
+	} else {
+	  y.style.display = "none";
+	}
+}
 //Get the element with id="defaultOpen" and click on it
 document.getElementById("defaultOpen").click();
