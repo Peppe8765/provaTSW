@@ -156,6 +156,7 @@ public class ConcertoModelDM implements ObjectModel<ConcertoBean>{
 			preparedstatement.setString(2, object.getDataEvento());
 			preparedstatement.setString(3, object.getStadioNome());
 			
+			
 			System.out.println("doSave (parte1):" + preparedstatement.toString());
 			preparedstatement.executeUpdate();
 			
