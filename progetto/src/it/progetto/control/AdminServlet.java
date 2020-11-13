@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.sun.jdi.event.Event;
+
 
 import it.progetto.model.AcquistaBean;
 import it.progetto.model.AcquistaModelDM;
@@ -190,11 +190,108 @@ public class AdminServlet extends HttpServlet {
 				}catch (SQLException e) {
 					e.printStackTrace();
 				}
+				request.setAttribute("messageUser", "stadio aggiunto con successo");
+			}
+			else if(isHere) {
+				request.setAttribute("messageUser", "impossibile aggiungere lo stadio selezionato");
 			}
 			
 		}
 		else if(action.equals("removeStadio")) {
+			String nomeStadio = request.getParameter("NomeStadio");
 			
+			if(nomeStadio != null && !nomeStadio.equals("")) {
+				Collection<StadioBean> stColl = new LinkedList<StadioBean>();
+				try {
+					stColl = sModel.doRetrieveAll("Nome");
+				}catch (SQLException e) {
+					e.printStackTrace();
+				}
+				
+				Iterator<?> itSt = stColl.iterator();
+				Boolean isHere = false;
+				StadioBean st = new StadioBean();
+				while(itSt.hasNext()) {
+					st = (StadioBean)itSt.next();
+					if(nomeStadio.equals(st.getNome()))
+						isHere = true;
+				}
+				
+				if(isHere) {
+					Collection<EventoBean> evColl = new LinkedList<EventoBean>();
+					try {
+						evColl = evModel.doRetrieveAllByStadioName(nomeStadio);
+					}catch (SQLException e) {
+						e.printStackTrace();
+					}
+					
+					Iterator<?> itEv = evColl.iterator();
+					EventoBean ev = new EventoBean();
+					while(itEv.hasNext()) {
+						ev = (EventoBean)itEv.next();
+						
+						Collection<TicketBean> tkColl = new LinkedList<TicketBean>();
+						Collection<AcquistaBean> aqColl = new LinkedList<AcquistaBean>();
+						
+						try {
+							tkColl = tkModel.doRetrieveAllByEvent("" + ev.geteCodiceID());
+							aqColl = aModel.doRetrieveAll("Biglietto_Codice_Biglietto");
+						}catch (SQLException e) {
+							e.printStackTrace();
+						}
+						
+						Iterator<?> itTk = tkColl.iterator();
+						Iterator<?> itAq = aqColl.iterator();
+						while(itTk.hasNext()) {
+							TicketBean ticket = (TicketBean)itTk.next();
+							
+							while(itAq.hasNext()) {
+								AcquistaBean aq = (AcquistaBean)itAq.next();
+								if(aq.getBiglietto_Codice_Biglietto() == ticket.getCodiceBiglietto()) {
+									try {
+										aModel.doDelete(aq);
+									}catch (SQLException e) {
+										e.printStackTrace();
+									}
+								}
+							}
+							itAq = aqColl.iterator();
+							
+							try {
+								tkModel.doDelete(ticket);
+							}catch (SQLException e) {
+								e.printStackTrace();
+							}
+						}
+						
+						try {
+							EventoSportivoBean evS = evSModel.doRetrieveByKey("" + ev.geteCodiceID());
+							evSModel.doDelete(evS);
+						}catch (SQLException e) {
+							e.printStackTrace();
+						}
+						
+						try {
+							ConcertoBean con = conModel.doRetrieveByKey("" + ev.geteCodiceID());
+							conModel.doDelete(con);
+						}catch (SQLException e) {
+							e.printStackTrace();
+						}
+					}
+					
+					try {
+						StadioBean stadio = sModel.doRetrieveByKey(nomeStadio);
+						sModel.doDelete(stadio);
+					}catch (SQLException e) {
+						e.printStackTrace();
+					}
+					
+					request.setAttribute("messageUser", "stadio eliminato con successo");
+				}
+				else if(!isHere) {
+					request.setAttribute("messageUser", "impossibile eliminare lo stadio selezionato");
+				}
+			}
 		}
 		
 		else if(action.equals("addEvent")) {
@@ -208,15 +305,61 @@ public class AdminServlet extends HttpServlet {
 			String squadra1 = request.getParameter("Squadra1");
 			String squadra2 = request.getParameter("Squadra2");
 			
-			if(titolo != null && dataEvento != null && stadioEvento != null) {
-				Collection<EventoBean> evColl = new LinkedList<EventoBean>();
+			if((titolo != null && !titolo.equals("")) && (dataEvento != null && !dataEvento.equals("")) && (stadioEvento != null && !stadioEvento.equals(""))) {
+				Collection<StadioBean> stColl = new LinkedList<StadioBean>();
 				try {
-					evColl = evModel.doRetrieveAll("ECodiceID");
+					stColl = sModel.doRetrieveAll("Nome");
 				}catch (SQLException e) {
 					e.printStackTrace();
 				}
-
 				
+				Iterator<?> itSt = stColl.iterator();
+				Boolean isHere = false;
+				StadioBean st = new StadioBean();
+				
+				while(itSt.hasNext()) {
+					st = (StadioBean)itSt.next();
+					if(stadioEvento.equals(st.getNome())) 
+						isHere = true;
+				}
+				
+				if(isHere) {
+				
+					if(artistaband != null && !artistaband.equals("")) {
+						
+						ConcertoBean concerto = new ConcertoBean();
+						try {
+							concerto.setTitolo(titolo);
+							concerto.setDataEvento(dataEvento);
+							concerto.setStadioNome(stadioEvento);
+							concerto.setArtistaBand(artistaband);	
+							conModel.doSave(concerto);
+						}catch (SQLException e) {
+							e.printStackTrace();
+						}
+					}
+					
+					if((tipo != null && !tipo.equals(""))&& (squadra1 != null && !squadra1.equals(""))&& (squadra2 != null && !squadra2.equals(""))) {
+						EventoSportivoBean evS = new EventoSportivoBean();
+						try {
+							evS.setTitolo(titolo);
+							evS.setDataEvento(dataEvento);
+							evS.setStadioNome(stadioEvento);
+							
+							evS.setTipo(tipo);
+							evS.setSquadra1(squadra1);
+							evS.setSquadra2(squadra2);
+							
+							evSModel.doSave(evS);
+						}catch (SQLException e) {
+							e.printStackTrace();
+						}
+					}
+					request.setAttribute("messageUser", "evento aggiunto con successo");
+				}
+				else if(!isHere) {
+					request.setAttribute("messageUser", "impossibile aggiungere l'evento selezionato");
+				}
 			}
 			
 		}
