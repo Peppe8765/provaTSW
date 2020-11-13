@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ticket S Home</title>
+</head>
+<link rel="stylesheet" href="Home2.css" >
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<body>
+
+
+
+<!-- Navigation Bar -->
+<nav>
+	<div class="logo">
+		<a href="HomePageView.html">Ticket S</a>
+	</div>
+
+	<ul class= "navBar" id= "myNavBar1">
+  		<li><a href="Stadi.jsp">STADI</a></li>
+  		<li><a href="Eventi.jsp">EVENTI</a></li>
+  		<li><a href="Biglietti.jsp">BIGLIETTI</a></li>
+  		<li><a href="Login.html" data-toggle="tooltip" data-placement="left" title="LOGIN"><i class="fa fa-key"></i></a></li>
+  		<li><a href="Profilo.jsp" data-toggle="tooltip" data-placement="left" title="PROFILO"><i class='fas fa-user-alt'></i></a></li>
+  		<li><a href="Carrello.jsp" data-toggle="tooltip" data-placement="left" title= "CARRELLO"><i class='fas fa-shopping-cart'></i></a></li>
+  		
+	</ul>
+	<div class="burger">
+		<div class="line1"></div>
+		<div class="line2"></div>
+		<div class="line3"></div>
+	</div>
+</nav>
+
+<!-- Automatic Slideshow Images -->
+<div class="galleria-foto-giganti col-9 col-s-12">
+<div class="foto-gigante">
+    <img src="foto/San Paolo.jpg" alt= "Stadio San Paolo">
+    <div class="scritta-nella-foto">
+      <h3>Los Angeles</h3>
+      <p><b>We had the best time playing at Venice Beach!</b></p>   
+    </div>
+  </div>
+  <div class="foto-gigante">
+    <img src="foto/Allianz Stadium.jpg" alt= "Stadio Allianz Stadium" >
+    <div class="scritta-nella-foto">
+      <h3>New York</h3>
+      <p><b>The atmosphere in New York is lorem ipsum.</b></p>    
+    </div>
+  </div>
+  <div class="foto-gigante">
+    <img src="foto/San Siro.jpg" alt= "Stadio San Siro" >
+    <div class="scritta-nella-foto">
+      <h3>Chicago</h3>
+      <p><b>Thank you, Chicago - A night we won't forget.</b></p>    
+    </div>
+  </div>
+</div>
+  
+  
+
+
+
+
+
+<!--Eventi più importanti-->
+
+<div class= "eventi-importanti col-11 col-s-12">
+	<p class= "titolo-eventi-importanti"><b>Eventi recenti più importanti</b></p>
+	<div class= "galleria-foto-eventi col-4 col-s-6">
+		<div class= "foto-eventi">
+			<a target= "_top" href= "foto/San Paolo.jpg">
+				<img src="foto/San Paolo.jpg" alt="Stadio San Paolo">
+			</a>
+			<div class= "desc"><p>Stadio San Paolo</p></div>
+		</div>
+	</div>
+
+	<div class= "galleria-foto-eventi col-4 col-s-6">
+		<div class= "foto-eventi">
+			<a target= "_top" href= "foto/San Paolo.jpg">
+				<img src="foto/San Paolo.jpg" alt="Stadio San Paolo">
+			</a>
+			<div class= "desc"><p>Stadio San Paolo</p></div>
+		</div>
+	</div>
+
+	<div class= "galleria-foto-eventi col-4 col-s-6">
+		<div class= "foto-eventi">
+			<a target= "_top" href= "foto/San Paolo.jpg">
+				<img src="foto/San Paolo.jpg" alt="Stadio San Paolo">
+			</a>
+			<div class= "desc"><p>Stadio San Paolo</p></div>
+		</div>
+	</div>
+	
+	
+	<div class= "galleria-foto-eventi col-4 col-s-6">
+		<div class= "foto-eventi">
+			<a target= "_top" href= "foto/San Paolo.jpg">
+				<img src="foto/San Paolo.jpg" alt="Stadio San Paolo">
+			</a>
+			<div class= "desc"><p>Stadio San Paolo</p></div>
+		</div>
+	</div>
+	
+	<div class= "galleria-foto-eventi col-4 col-s-6">
+		<div class= "foto-eventi">
+			<a target= "_top" href= "foto/San Paolo.jpg">
+				<img src="foto/San Paolo.jpg" alt="Stadio San Paolo">
+			</a>
+			<div class= "desc"><p>Stadio San Paolo</p></div>
+		</div>
+	</div>
+	
+	<div class= "galleria-foto-eventi col-4 col-s-6"><!--col-4 col-s-6  -->
+		<div class= "foto-eventi">
+			<a target= "_top" href= "foto/San Paolo.jpg">
+				<img src="foto/San Paolo.jpg" alt="Stadio San Paolo">
+			</a>
+			<div class= "desc"><p>Stadio San Paolo</p></div>
+		</div>
+	</div>
+</div>
+
+
+<!-- Footer -->
+<footer class= "footer col-10 col-s-12">
+	<h2>Questo è il footer non so cosa metterci dentro</h2>
+</footer>
+
+
+
+
+<script src="NavBar.js"></script>
+
+<script>
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
+
+<script>
+// Automatic Slideshow - change image every 4 seconds
+var myIndex = 0;
+carousel();
+
+function carousel() {
+  var i;
+  var x = document.getElementsByClassName("foto-gigante");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  myIndex++;
+  if (myIndex > x.length) {myIndex = 1}    
+  x[myIndex-1].style.display = "block";  
+  setTimeout(carousel, 4000);    
+}
+</script>
+
+</body>
+
+
+
+</html>
