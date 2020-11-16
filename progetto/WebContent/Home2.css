@@ -67,121 +67,6 @@ nav {
 }
 
 
-/*.sticky {
-  position: fixed;
-  top: 0;
-  width: 100%;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: gold;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-.dropdown-content a {
-  	color: black;
-  	padding: 12px 0px;
-  	text-decoration: none;
-  	display: block;
-  	text-align: center;
-}
-
-.dropdown-content a:hover 
-{background-color: tomato;}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-/*COSE navBar*/
-
-
-
-/*.dropdown {
-  float: left;
-  overflow: hidden;
-}
-
-.dropdown .dropbtn {
-  font-size: 17px;    
-  border: none;
-  outline: none;
-  color: white;
-  padding: 14px 16px;
-  background-color: inherit;
-  font-family: inherit;
-  margin: 0;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-.dropdown-content a {
-  float: none;
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-}
-
-.topnav a:hover, .dropdown:hover .dropbtn {
-  background-color: #555;
-  color: white;
-}
-
-.dropdown-content a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}*/
-
-/*@media screen and (max-width: 750px) {
-  .navBar .sinistra, .dropdown .dropbtn {
-    display: none;
-  }
-  .navBar a.icon {
-    float: left;
-    display: block;
-  }
-}
-
-@media screen and (max-width: 750px) {
-  	.navBar.responsive {position: relative;}
-  	.navBar.responsive .icon {
-    	position: absolute;
-    	border-right: 1px solid white;
-    	left: 0;
-    	top: 0;
-  	}
-  	.navBar.responsive a.sinistra {
-    	float: none;
-    	display: block;
-    	text-align: center;
-  	}
-  	.navBar.responsive a.destra {
-		display:none;
-	}
-  	.navBar.responsive .dropdown {float: none;}
-  	.navBar.responsive .dropdown-content {position: relative;}
-  	.navBar.responsive .dropdown .dropbtn {
-    	display: block;
-    	width: 100%;
-    	text-align: center;
-  	}*/
 
 /*Foto giganti*/
 
@@ -297,7 +182,6 @@ div.desc {
 	color: white;
   	box-shadow: 0 4px 8px 0px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-}
 .rettangoli {
 	width: 230px;
 	height: 35px;
@@ -317,7 +201,7 @@ div.desc {
 	margin-bottom: 30px;
 	margin-top: 30px;
 }
-.biglietti h1, p {
+.biglietti h1, .biglietti p {
 	text-align: center;
 	margin-bottom: 30px;
 }
@@ -342,7 +226,7 @@ div.desc {
 	margin-top: 30px;
 	margin-bottom: 30px;
 }
-.carrello h1, .carrello h2 {
+.carrello h1 {
 	text-align: center;
 	margin-bottom: 30px;
 }
@@ -378,10 +262,6 @@ div.desc {
 	margin-top: 5px;
 	margin-bottom: 3px;
 }
-.buttoncinocar {
-	
-}
-
 
 /*PageLogin*/
 
@@ -502,7 +382,7 @@ div.desc {
 	margin-top: 30px;
 	margin-bottom: 30px;
 }
-.eventi h1, h2 {
+.eventi h1, .eventi h2 {
 	text-align: center;
 	margin-bottom: 30px;
 }
@@ -694,7 +574,7 @@ th {
 		
 	}
 	.navBar a {
-	align-text: left;
+		text-align: left;
 	}
 	.burger {
 		display: block;
