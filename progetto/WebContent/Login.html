@@ -34,41 +34,40 @@
 </nav>
 
 	
-	<div class="scelta col-8 col-s-10">
+	<div class="scelta">
 		<button class="tablinks button" onclick="openCitylog(event, 'registrazione')">Registrazione</button>
 		<button class="tablinks button" onclick="openCitylog(event, 'login')" id="defaultOpen">Login</button>
 		<button class="tablinks button" onclick="openCitylog(event, 'loginAdmin')">Admin Login</button>
 	</div>
 	
 	
-	<div id="registrazione" class="tabcontentlog col-6 col-s-10">
-		<form action="RegisterServlet" method="post" name="formReg" onsubmit="formValLog()">
-			<label for="email">Email:</label><br>
-			<input class="rettangolilog" type="email" id="email" name="email"><br>
+	<div id="registrazione" class="tabcontentlog col-4 col-s-7">
+		<form action="RegisterServlet" method="post" name="formReg">
+			<label class="labelLog" for="email">Email:</label><br>
+			<input class="rettangolilog" type="email" id="email" name="email" placeholder="MarioRossi10@gmail.com" required><br>
 			<p id="validEmailReg"></p>
-			<label for="uname">Nome utente:</label><br>
-			<input class="rettangolilog" type="text" id="uname" name="uname"><br>
+			<label class="labelLog" for="uname">Nome utente:</label><br>
+			<input class="rettangolilog" type="text" id="uname" name="uname" placeholder="MarioRossi" pattern=".{5,}" title="Inserire un nome utente di almeno 5 caratteri" required><br>
 			<p id="validUnameReg"></p>
-			<label for="pass">Password:</label><br>
-			<input class="rettangolilog" type="password" id="pass" name="pass"><br>
+			<label class="labelLog" for="pass">Password:</label><br>
+			<input class="rettangolilog" type="password" id="pass" name="pass" placeholder="almeno 8 caratteri e 1 numero" pattern="(?=.*\d)(?=.*[a-z]).{8,}" title="Inserire una password con almeno 8 caratteri di cui almeno 1 cifra numerica" required><br>
 			<p id="validPassReg"></p>
-			<label for="pass2">Ripeti la Password:</label><br>
-			<input class="rettangolilog" type="password" id="pass2" name="pass"><br>
+			<label class="labelLog" for="pass2">Ripeti la Password:</label><br>
+			<input class="rettangolilog" type="password" id="pass2" name="pass2" placeholder="Non copiare a incollare da sopra" pattern="(?=.*\d)(?=.*[a-z]).{8,}" title="Inserire una password con almeno 8 caratteri di cui almeno 1 cifra numerica" required><br>
 			<p id="validRPassReg"></p>
-			<p id="error"></p>
 			<input class="buttoncinolog" type="submit" value="Invia" >
 		</form>		
 	</div>
 	
 	
 	
-	<div id="login" class="tabcontentlog col-6 col-s-10">
-		<form action="LoginServlet" method="post" name="formLog">
-			<label for="uname">Nome utente:</label><br>
-			<input class="rettangolilog" type="text" id="uname" name="uname" required><br>
+	<div id="login" class="tabcontentlog col-4 col-s-7">
+		<form action="LoginServlet" method="post" name="formLog" >
+			<label class="labelLog" for="uname">Nome utente:</label><br>
+			<input class="rettangolilog unameLog" type="text" id="uname" name="uname" placeholder="MarioRossi" pattern=".{5,}" title="Inserire un nome utente di almeno 5 caratteri" required><br>
 			<p id="validUnameLog"></p>
-			<label for="pass">Password:</label><br>
-			<input class="rettangolilog" type="password" id="pass" name="pass" required><br>
+			<label class="labelLog" for="pass">Password:</label><br>
+			<input class="rettangolilog passLog" type="password" id="pass" name="pass" placeholder="almeno 8 caratteri e 1 numero" pattern="(?=.*\d)(?=.*[a-z]).{8,}" title="Inserire una password con almeno 8 caratteri di cui almeno 1 cifra numerica" required><br>
 			<p id="validPassLog"></p>
 			
 			<input class="buttoncinolog" type="submit" value="Login">
@@ -78,15 +77,15 @@
 	
 	
 	
-	<div id="loginAdmin" class="tabcontentlog col-6 col-s-10">
-		<form action="AdminLoginServlet" method="post" name="formLogA" onsubmit="return alert()">
-			<label for="uname">Nome utente Admin:</label><br>
-			<input class="rettangolilog" type="text" id="uname" name="uname" required><br>
+	<div id="loginAdmin" class="tabcontentlog col-4 col-s-7">
+		<form action="AdminLoginServlet" method="post" name="formLogA" >
+			<label class="labelLog" for="uname">Nome utente Admin:</label><br>
+			<input class="rettangolilog" type="text" id="uname" name="uname" placeholder="MarioRossi" pattern=".{5,}" title="Inserire un nome utente di almeno 5 caratteri" required><br>
 			<p id="validUnameLogA"></p>
-			<label for="pass">Password Admin:</label><br>
-			<input class="rettangolilog" type="password" id="pass" name="pass" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required><br>
+			<label class="labelLog" for="pass">Password Admin:</label><br>
+			<input class="rettangolilog" type="password" id="pass" name="pass" placeholder="almeno 8 caratteri e 1 numero" pattern="(?=.*\d)(?=.*[a-z]).{8,}" title="Inserire una password con almeno 8 caratteri di cui almeno 1 cifra numerica" required><br>
 			<p id="validPassLogA"></p>
-			<label for="codiceAdmin"> Codice di accesso Admin:</label><br>
+			<label class="labelLog" for="codiceAdmin"> Codice di accesso Admin:</label><br>
 			<input class="rettangolilog" type="number" id="codiceAdmin" name="codiceAdmin" required><br>
 			<p id="validCodLogA"></p>
 			
@@ -94,7 +93,7 @@
 		</form>
 	</div>
 
-<script src="FormValLog2.js"></script>
+<script src="FormValLog.js"></script>
 <script src="AdminPage.js"></script>
 <script src="NavBar.js"></script>
 

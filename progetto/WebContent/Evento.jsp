@@ -37,11 +37,6 @@ ArrayList<Integer> ids = new ArrayList<Integer>();
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-
-
-
-
 <title><%=eventoS.getTitolo() %></title>
 </head>
 <body>
@@ -69,6 +64,8 @@ ArrayList<Integer> ids = new ArrayList<Integer>();
 </nav>
 	
 	
+	
+	<div class="evento col-10 col-s-10">
 	<h1><%=eventoS.getTitolo() %></h1>
 	
 
@@ -78,16 +75,13 @@ ArrayList<Integer> ids = new ArrayList<Integer>();
 
 	
 	
-	<div>
-	<table>
+	
+	<table class="table">
 		<tr>
 				<th>Codice Biglietto</th>
-				<th>Settore</th>
-				<th>Quantità</th>
-				<th>Codice ID evento</th>
-				<th>Nome evento</th>
+				<th>Stadio e Settore</th>
+				<th>Biglietti rimanenti</th>
 				<th>Data</th>
-				<th>Stadio</th>
 				<th>Costo</th>
 			</tr>
 	
@@ -101,19 +95,17 @@ ArrayList<Integer> ids = new ArrayList<Integer>();
 		codiceBiglietto = tk.getCodiceBiglietto();
 		
 		ids.add(codiceBiglietto);
-		
+
 %>	
 
 		<tr>
 			<td><%=codiceBiglietto%></td>
-			<td><%=tk.getSettore() %></td>
+			<td><%=eventoS.getStadioNome() %>
+			<%=tk.getSettore() %></td>
 			<td><%=tk.getQuantità() %></td>
-			<td><%=tk.getEventoECodiceId() %></td>
-			<td><%=eventoS.getTitolo() %></td>
 			<td><%=eventoS.getDataEvento() %></td>
-			<td><%=eventoS.getStadioNome() %></td>
 			<td><%=tk.getCosto() %></td>
-			<td><button id="button" onclick='$.ajax({"type": "POST","data": "param=<%=tk.getCodiceBiglietto()%>","url": "./Provajson","success": function(risposta) { $("#message").html(risposta);}});'>Aggiungi al carrello</button></td>
+			<td><button class="buttoncino" id="button" onclick='$.ajax({"type": "POST","data": "param=<%=tk.getCodiceBiglietto()%>","url": "./Provajson","success": function(risposta) { $("#message").html(risposta);}});'>Aggiungi al carrello</button></td>
 			
 		</tr>
 		

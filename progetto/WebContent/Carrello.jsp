@@ -67,13 +67,12 @@ if(nomeUtente == null){
 	</div>
 </nav>
 
-	<h1>Carrello e pagamento</h1>
 
 	
 	
 
 		<div class="carrello col-8 col-s-10">
-		<h2> Carrello</h2>
+		<h1>Carrello e Pagamento</h1>
 		
 		
 		
@@ -81,7 +80,7 @@ if(nomeUtente == null){
 		
 		<a href="<%=response.encodeURL("CartControl?action=clearCart")%>">svuota carrello</a>
 		
-		<table id="carrellotable">
+		<table class="table">
 			<tr>
 				<th>Codice Biglietto</th>
 				<th>Settore</th>

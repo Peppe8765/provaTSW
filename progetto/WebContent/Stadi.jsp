@@ -50,18 +50,17 @@ StadioBean stadio = new StadioBean();
 	</div>
 </nav>
 	
+	<div class="stadi col-8 col-s-10">
+	<h1>Lista degli stadi</h1>
 	
-	<div>Lista degli stadi</div>
 	
-	<div>
-		<table>
+		<table class="table">
 			<tr>
 				<th>Nome</th>
 				<th>Nazione</th>
 				<th>Città</th>
 				<th>Indirizzo</th>
 				<th>Capienza</th>
-				<th>Descrizione</th>
 			</tr>
 		
 		<%
@@ -76,7 +75,6 @@ StadioBean stadio = new StadioBean();
 				<td><%= stadio.getCittà() %></td>
 				<td><%= stadio.getIndirizzo() %></td>
 				<td><%= stadio.getCapienza() %></td>
-				<td><%= stadio.getDescrizione()%></td>
 			</tr>
 		<%} %>
 		

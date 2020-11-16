@@ -52,17 +52,17 @@ EventoBean ev = new EventoBean();
 </nav>
 
 
-	
+	<div class="eventi col-8 col-s-10">
 	<h1> Lista degli eventi </h1>
 	
 	
-	<div>
+	
 		<table>
 			<tr>
 				<th>Codice Evento</th>
 				<th>Titolo</th>
-				<th> Data dell'evento</th>
-				<th> Nome dello stadio</th>
+				<th>Nome Stadio</th>
+				<th>Data</th>
 			</tr>
 		
 		<%
@@ -73,9 +73,10 @@ EventoBean ev = new EventoBean();
 		%>		
 			<tr>
 				<td><%=ev.geteCodiceID() %></td>
-				<td><a href="<%=response.encodeURL("./EventoServlet?idEvent=" + ev.geteCodiceID())%>"><%=ev.getTitolo() %></a></td>		
+				<td><a href="<%=response.encodeURL("./EventoServlet?idEvent=" + ev.geteCodiceID())%>"><%=ev.getTitolo() %></a></td>
+				<td><a href="<%=response.encodeURL("./EventStadioServlet?stadioName=" + ev.getStadioNome())%>"><%=ev.getStadioNome() %></a></td>		
 				<td><%=ev.getDataEvento() %></td>
-				<td><a href="<%=response.encodeURL("./EventStadioServlet?stadioName=" + ev.getStadioNome())%>"><%=ev.getStadioNome() %></a></td>
+				
 			</tr>
 		<%} %>
 		
@@ -90,36 +91,6 @@ EventoBean ev = new EventoBean();
 	
 	
 <script src="NavBar.js"></script>
-<script>
-//Navigation Bar
-function myFunction() {
-	  var x = document.getElementById("myNavBar1");
-	  if (x.className === "navBar") {
-	    x.className += " responsive";
-	  } else {
-	    x.className = "navBar";
-	  }
-	}
-
-
-//When the user scrolls the page, execute myFunction
-window.onscroll = function() {stickyFunction()};
-
-
-var navBar = document.getElementById("myNavBar1");
-
-var sticky = navBar.offsetTop;
-
-// Add the sticky class to the navBar when you reach its scroll position. Remove "sticky" when you leave the scroll position
-function stickyFunction() {
-  if (window.pageYOffset >= sticky) {
-    navBar.classList.add("sticky")
-  } else {
-    navBar.classList.remove("sticky");
-  }
-}
-
-</script>
 	
 	
 </body>

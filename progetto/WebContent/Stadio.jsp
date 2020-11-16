@@ -58,7 +58,7 @@ EventoBean event = new EventoBean();
 </nav>
 	
 	
-	
+	<div class="stadio col-8 col-s-10">
 	<h1><%=stadioName %></h1>	
 	
 <img alt="<%=stadio.getNome() %>" src="foto/<%=stadio.getNome() + ".jpg"%>" height="200">	
@@ -66,15 +66,16 @@ EventoBean event = new EventoBean();
 	
 	
 	<p><%=stadio.getDescrizione() %></p>
+	</div>
 	
-	<div>
+	<div class="eventi col-8 col-s-10">
 		<h2>Lista eventi</h2>
 	
-		<table>
+		<table class="table">
 			<tr>
 				<th>Codice Evento</th>
 				<th>Titolo</th>
-				<th> Data dell'evento</th>
+				<th>Data dell'evento</th>
 			</tr>
 		
 <%

@@ -1,4 +1,4 @@
-function formValLog() {
+function formValReg() {
 	var email = document.getElementById("email").value;
 	var uname = document.getElementById("uname").value;
 	var pass = document.getElementById("pass").value;

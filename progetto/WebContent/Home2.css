@@ -4,7 +4,7 @@
   	font-family: "Comic Sans MS", Serif;
 }
 body {
-	
+	background-color: rgba(255, 255, 36, 0.3);
 }
 /*Nav Bar*/
 
@@ -32,7 +32,7 @@ nav {
 .navBar {
 	display: flex;
 	justify-content: space-around;		
-	width: 40%;
+	width: 50%;
 	}
 .navBar li {
 	list-style-type: none;
@@ -43,7 +43,7 @@ nav {
 	text-align: center;
 	letter-spacing: 3px;
 	font-weight: bold;
-	padding: 15px 18px;
+	padding: 15px 16px;
 	font-size: 13px;
 }
 .navBar a:hover:not(.active) {
@@ -280,15 +280,24 @@ div.desc {
 
 
 .buttoncino {
-	background-color: tomato;
-	color: white;
-	font: "Comic Sans MS", Serif;
+	background-color: gold;
+	color: black;
+	font: 16px "Comic Sans MS", Serif;
+	border-style: inset;
+	border-width: 3px;
+	border-color: tomato;
+	border-radius: 5px;
 	text-align: center;
 	margin: 10px;
 	cursor: pointer;
-	transition-duration: 0.4s;
 }
-
+.buttoncino:hover {
+	transition-duration: 0.4s;
+	background-color: tomato;
+	color: white;
+  	box-shadow: 0 4px 8px 0px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+}
 .rettangoli {
 	width: 230px;
 	height: 35px;
@@ -305,20 +314,18 @@ div.desc {
 
 .biglietti {
 	margin: auto;
+	margin-bottom: 30px;
 	margin-top: 30px;
 }
-.titolo-biglietti {
+.biglietti h1, p {
 	text-align: center;
+	margin-bottom: 30px;
 }
 #biglietti td, #biglietti th {
 	border: 1px solid grey;
 }
-#biglietti td:hover {
-	background-color: blue;
-}
 #buttoncinobig {
 	font: 14px;
-	border: 1px solid white;
 	padding: 5px 15px;
 }
 #buttoncinobig:hover {
@@ -327,15 +334,17 @@ div.desc {
 
 /*PageCarrello*/
 
-#carrellotable th, #carrellotable td {
+.table th, .table td {
 	border: 1px solid #ddd;
 }
 .carrello, .pagamento {
 	margin: auto;
 	margin-top: 30px;
+	margin-bottom: 30px;
 }
-.carrello h2 {
+.carrello h1, .carrello h2 {
 	text-align: center;
+	margin-bottom: 30px;
 }
 .pagamento {
   	border: 1px solid #ccc;
@@ -343,7 +352,6 @@ div.desc {
 	margin-bottom: 25px;
 	background-color: white;
   	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  	margin-bottom: 25px;
 }
 .pagamento h2, .rettangolicar, .buttoncinocar, .labelcar {
 	margin-left: 25%;
@@ -379,8 +387,8 @@ div.desc {
 
 
 .scelta {
-	margin-left: auto;
-	margin-right: auto;
+	display: flex;
+	justify-content: center;
 	margin-top: 30px;
 	margin-bottom: 30px;
 }
@@ -407,7 +415,10 @@ div.desc {
 	margin-left:auto;
 	margin-right:auto;
 }
+
 .rettangolilog {
+	margin-left: 20%;
+	margin-right: auto;
 	width: 230px;
 	height: 35px;
 	font: 18px;
@@ -418,7 +429,13 @@ div.desc {
 	margin-top: 5px;
 	margin-bottom: 3px;
 }
+.labelLog {
+	margin-left: 20%;
+	padding: 10px;
+}
 .buttoncinolog {
+	margin-left: 20%;
+	margin-right: auto;
 	background-color: gold;
 	font: 20px "Comic Sans MS", Serif;
 	border-style: inset;
@@ -434,6 +451,14 @@ div.desc {
 	background-color: tomato;
 	color: white;
 }
+.tabcontentlog {
+	border: 1px solid #ccc;
+	margin-top: 50px;
+	margin-bottom: 25px;
+	background-color: white;
+  	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  	
+}
 
 /*AdminPage*/
 .tab {
@@ -441,7 +466,7 @@ div.desc {
  	border: 1px solid #ccc;
   	background-color: #f1f1f1;
   	width: 15%;
-  	height: 300px;
+  	min-width: 100px;
 }
 .tab button {
   	display: block;
@@ -461,6 +486,133 @@ div.desc {
 }
 .tab button.active {
   	background-color: #ccc;
+}
+.tabcontent {
+	margin-left: 30px;
+}
+.tabcontent p {
+	font-size: 15px;
+	margin-bottom: 15px;
+	font-weight: bold;
+	font-family: "Comic Sans MS", Serif;
+}
+/* Page Eventi*/
+.eventi {
+	margin: auto;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+.eventi h1, h2 {
+	text-align: center;
+	margin-bottom: 30px;
+}
+table {
+  	border-collapse: collapse;
+  	width: 100%;
+  	background-color: white;
+}
+
+th, td {
+  	text-align: center;
+  	padding: 8px;
+}
+td {
+	
+}
+td a {
+	text-decoration: none;
+}
+td a:hover {
+	text-decoration: underline;
+}
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+  	background-color: tomato;
+  	color: white;
+}
+
+
+
+/* Page Evento*/
+.evento {
+	margin: auto;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+.evento h1 {
+	text-align: center;
+}
+
+
+/*Profilo*/
+.profilo {
+	justify-content: center;
+}
+.profilo h1 {
+	text-align: center;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+.immagine {
+	float: left; 
+	margin-left: 20px;
+	margin-right: 20px;
+}
+.coseProfilo{
+	float: left; 
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-top: 100px;
+}
+.cronologia {
+	margin: auto;
+	margin-top: 150px;
+	margin-bottom: 30px;
+}
+.cronologia table, .cronologia td, .cronologia th{  
+	margin-top: 20px;
+  	text-align: left;
+}
+.cronologia table {
+ 	border-collapse: collapse;
+  	width: 100%;
+}
+.cronologia th, .cronologia td {
+  	padding: 15px;
+}
+.cronologia h2 {
+	text-align: center;
+}
+.pannello {
+	float: left; 
+	margin: 50px 20px 25px 20px;
+	border: 1px solid #ccc;
+	background-color: white;
+  	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  	padding: 10px;
+}
+.pannello p {
+	text-align: center;
+}
+/*Stadi*/
+.stadi {
+	margin: auto;
+}
+.stadi h1 {
+	text-align: center;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+/*Stadio*/
+.stadio {
+	margin: auto;
+	margin-top: 30px;
+}
+.stadio h1 {
+	text-align: center;
+	margin-top: 20px;
+	margin-bottom: 30px;
 }
 /* Style the tab content */
 
@@ -512,14 +664,14 @@ div.desc {
 
 @media screen and (max-width: 1024px) {
 	.navBar {
-		width: 55%;
+		width: 60%;
 	}
 }
 
 @media screen and (max-width: 768px) {
-	.pagamento {
-  	margin-left: 30px;
-  	margin-right: 30px;
+	.pagamento, .tabcontentlog {
+  		margin-left: 30px;
+  		margin-right: 30px;
   	}
 	body {
 		overflow-x: hidden;

@@ -81,24 +81,24 @@ if(admin == null){
 	<div id="AddStadio" class="tabcontent">
 		<form action="AdminServlet" method="get">
 			<p>Aggiungere uno stadio</p>
-			<input type="text" id="action" name="action" value="addStadio" hidden="true">
+			<input class="rettangoli" type="text" id="action" name="action" value="addStadio" hidden="true">
 			<label for="NomeStadio">Nome</label><br>
-			<input type="text" id="NomeStadio" name="NomeStadio" required="required"><br>
+			<input class="rettangoli" type="text" id="NomeStadio" name="NomeStadio" required="required"><br>
 			<label for="Nazione">Nazione</label><br>
-			<input type="text" id="Nazione" name="Nazione" required="required"><br>
+			<input class="rettangoli" type="text" id="Nazione" name="Nazione" required="required"><br>
 			<label for="Città">Città</label><br>
-			<input type="text" id="Città" name="Città" required="required"><br>
+			<input class="rettangoli" type="text" id="Città" name="Città" required="required"><br>
 			<label for="Indirizzo">Indirizzo</label><br>
-			<input type="text" id="Indirizzo" name="Indirizzo" required="required"><br>
+			<input class="rettangoli" type="text" id="Indirizzo" name="Indirizzo" required="required"><br>
 			<label for="Capienza">Capienza</label><br>
-			<input type="number" id="Capienza" name="Capienza" required="required"><br>
+			<input class="rettangoli" type="number" id="Capienza" name="Capienza" required="required"><br>
 			<label for="Descrizione">Descrizione</label><br>
-			<input type="text" id="Descrizione" name="Descrizione" required="required"><br>
+			<input class="rettangoli" type="text" id="Descrizione" name="Descrizione" required="required"><br>
 			<label for="Comune">Comune</label><br>
 			<input class="rettangoli" type="text" id="Comune" name="Comune" ><br>
 			<label for="Società">Società</label><br>
 			<input class="rettangoli" type="text" id="Società" name="Società" ><br>
-			<label for="AnnoFondazione">Anno di fondazione</label><br>
+			<label for="AnnoFondazione">Anno di fondazione società</label><br>
 			<input class="rettangoli" type="number" id="AnnoFondazione" name="AnnoFondazione" ><br>
 			<input class="buttoncino" type="submit" value="Aggiungi">
 		</form>

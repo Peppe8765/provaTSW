@@ -82,12 +82,12 @@ Blob foto = (Blob)user.getFotoProfilo();
 	</div>
 </nav>
 
-
+<div class="profilo">
 <h1>Profilo</h1>
 
 
-	<div>
-		<div>
+	
+		<div class="immagine col-3 col-s-4">
 			<% if(foto != null) {%>
 			<img alt="foto/foto_profilo_vuota.png" src="./MostraFotoServlet" height="150"><br>
 			<%} else{ %>
@@ -95,40 +95,43 @@ Blob foto = (Blob)user.getFotoProfilo();
 			<%} %>
 			<form action="ProfiloServlet" method="post" enctype="multipart/form-data">
   				<input type="file" name="foto" required><br>
-  				<input type="submit" value="Cambia Foto">
+  				<input class="buttoncino" type="submit" value="Cambia Foto">
 </form>
 			
-			
-		</div>
-	
+			</div>
+		
+	<div class="coseProfilo col-3 col-s-3">
 		<p>Nome Utente : <%=nomeUtente%></p>
 		<p>Email: <%=request.getAttribute("email") %></p>
+		<button class="buttoncino" type="button" onclick="location.href='./LogoutServlet'">Logout</button> <!-- il bottone è reso funzionate da un breve codice js -->
+		</div>
 		
 		
+		<div class="pannello col-3 col-s-3">
+		<p> Se sei un admin verrai cliccando questo pulsante arriverai alla pagina di amministrazione propria degli Admin.<br>
+		Altrimenti dovrai loggarti come Admin per accedervi.<p>
+		<button class="buttoncino" id="adminPage" type="button" onclick="location.href='./AdminPage.jsp'">Pannello di controllo</button><br>
+		</div>	
 	
 		
 		
-		<button id="adminPage" type="button" onclick="location.href='./AdminPage.jsp'">Pannello di controllo</button><br><br>	
-	
 		
-		<button type="button" onclick="location.href='./LogoutServlet'">Logout</button> <!-- il bottone è reso funzionate da un breve codice js -->
 	</div>
 	
 	
 		
 	
 	
-	<div>
+	<div class="cronologia col-8 col-s-10">
 		<h2>Cronologia biglietti acquistati</h2>
 		
-		<table>
+		<table class="table">
 			<tr>
 				<th>Codice Biglietto</th>
+				<th>Stadio</th>
 				<th>Settore</th>
-				<th>Codice ID evento</th>
 				<th>Nome evento</th>
 				<th>Data</th>
-				<th>Stadio</th>
 				<th>Costo</th>
 			</tr>
 			
@@ -144,11 +147,10 @@ Blob foto = (Blob)user.getFotoProfilo();
 					
 			<tr>
 				<td><%=tbean.getCodiceBiglietto() %></td>
+				<td><%=event.getStadioNome()%></td>
 				<td><%=tbean.getSettore() %></td>
-				<td><%=tbean.getEventoECodiceId() %></td>
 				<td><%=event.getTitolo()%></td>
 				<td><%=event.getDataEvento()%></td>
-				<td><%=event.getStadioNome()%></td>
 				<td><%=tbean.getCosto() %></td>
 			</tr>	
 		
@@ -157,5 +159,6 @@ Blob foto = (Blob)user.getFotoProfilo();
 			
 		</table>
 	</div>
+	<script src="NavBar.js"></script>
 </body>
 </html>

@@ -37,7 +37,17 @@ EventoBean event = new EventoBean();
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
 
+@media screen and (max-width: 768px) {
+	body {
+		font-size: 10px;
+	}
+	.buttoncino {
+		font-size: 10px;
+	}
+}
+</style>
 
 <title>Pagina dei biglietti</title>
 </head>
@@ -65,24 +75,20 @@ EventoBean event = new EventoBean();
 </nav>
 	
 <div class="biglietti col-10 col-s-12">
-	<h1 class="titolo-biglietti">Biglietti in vendita</h1>
+	<h1 >Biglietti in vendita</h1>
 
-	<%
-	String message = (String)request.getAttribute("message");
-	if(message != null && !message.equals("")) {
-%>
-	<p class="titolo-biglietti" style="color: green;"><%=message %></p>
-<%}%>
+<p id="ms" Style="color: green; text-align: center;"></p>
 
 	
 		<table id="biglietti">
 			<tr>
-				<th>Codice Biglietto</th>
+				<th>Codice</th>
 				<th>Evento</th>
-				<th>Stadio e Settore</th>
-				<th>Data</th>
+				<th colspan="2">Stadio e Settore</th>
+				<th>Data Evento</th>
 				<th>Biglietti rimanenti</th>
 				<th>Costo</th>
+				<th>Azione</th>
 			</tr>
 		
 	<%
@@ -103,16 +109,14 @@ EventoBean event = new EventoBean();
 				itEv = ev.iterator();
 	%>				
 			<tr>
-				<td>Codice biglietto: <%=tbean.getCodiceBiglietto() %></td>
-				<td><%=event.getDataEvento()%></td>
+				<td>Codice: <%=tbean.getCodiceBiglietto() %></td>
 				<td><%=event.getTitolo()%></td>
-				<td><%=event.getStadioNome()%>
-				<%=tbean.getSettore() %></td>
+				<td><%=event.getStadioNome()%></td>
+				<td><%=tbean.getSettore() %></td>
 				<td><%=event.getDataEvento()%></td>
 				<td>Biglietti rimanenti: <%=tbean.getQuantità() %></td>
 				<td>Costo: <%=tbean.getCosto() %></td>
-				<td><a href="<%=response.encodeURL("BigliettiServlet?action=addCart&id=" + tbean.getCodiceBiglietto()) %>"><button class="buttoncino" id="buttoncinobig" type ="button" onclick=""> Aggiungi</button></a></td>
-				<td><button type ="button" onclick='$.ajax({"type": "POST","data": "param=<%=tbean.getCodiceBiglietto()%>","url": "./Provajson","success": function(risposta) { $("#ms").html(risposta);}});'> Aggiungi al carrello</button></td>
+				<td><button class="buttoncino" type ="button" onclick='$.ajax({"type": "POST","data": "param=<%=tbean.getCodiceBiglietto()%>","url": "./Provajson","success": function(risposta) { $("#ms").html(risposta);}});'>Aggiungi</button></td>
 			</tr>	
 	<%} %>		
 
@@ -121,36 +125,6 @@ EventoBean event = new EventoBean();
 
 	</div>
 <script src="NavBar.js"></script>
-<script>
-//Navigation Bar
-function myFunction() {
-	  var x = document.getElementById("myNavBar1");
-	  if (x.className === "navBar") {
-	    x.className += " responsive";
-	  } else {
-	    x.className = "navBar";
-	  }
-	}
-
-
-//When the user scrolls the page, execute myFunction
-window.onscroll = function() {stickyFunction()};
-
-
-var navBar = document.getElementById("myNavBar1");
-
-var sticky = navBar.offsetTop;
-
-// Add the sticky class to the navBar when you reach its scroll position. Remove "sticky" when you leave the scroll position
-function stickyFunction() {
-  if (window.pageYOffset >= sticky) {
-    navBar.classList.add("sticky")
-  } else {
-    navBar.classList.remove("sticky");
-  }
-}
-
-</script>
 
 
 </body>

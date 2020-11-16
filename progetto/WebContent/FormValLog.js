@@ -1,33 +1,43 @@
-function alert(){
-	/*var ind= formcar.Indirizzo.value;
-	var dest= formcar.Destinatario.value;
-	var tel= formcar.Telefono.value;*/
-	var email= formlog.email.value;
-	var uname= formlog.uname.value;
-	var pass= formlog.pass.value;
-	var codAdm= formlog.codiceAdmin.value;
+function alertReg(){
+	var email= formReg.email.value;
+	var unameR= formReg.uname.value;
+	var unameL= formLog.uname.value;
+	var unameLA= formLogA.uname.value;
+	var passR= formReg.pass.value;
+	var pass2R= formReg.pass2.value;
+	var passL= formLog.pass.value;
+	var passLA= formLogA.pass.value;
+	var codAdm= formLogA.codiceAdmin.value;
 	
-	/*if(ind.length == 0){
-		alert("Inserire un indirizzo");
-		return false;
-	}
-	if(dest.length == 0){
-		alert("Inserire un destinatario");
-		return false;
-	}
-	if(tel.length == 0){
-		alert("Inserire un numero di telefono");
-		return false;
-	}*/
 	if(email.length == 0){
 		alert("Inserire un indirizzo email");
 		return false;
 	}
-	if(uname.length == 0){
+	if(unameR.length == 0){
 		alert("Inserire un nome utente");
 		return false;
 	}
-	if(pass.length == 0){
+	if(unameL.length == 0){
+		alert("Inserire un nome utente");
+		return false;
+	}
+	if(unameLA.length == 0){
+		alert("Inserire un nome utente");
+		return false;
+	}
+	if(passR.length == 0){
+		alert("Inserire una password");
+		return false;
+	}
+	if(pass2R.length == 0){
+		alert("Inserire una password");
+		return false;
+	}
+	if(passL.length == 0){
+		alert("Inserire una password");
+		return false;
+	}
+	if(passLA.length == 0){
 		alert("Inserire una password");
 		return false;
 	}
@@ -36,6 +46,20 @@ function alert(){
 		return false;
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function formEmailReg() {
 	var txt = "";
 	if (document.getElementById("email").validity.patternMismatch) {
@@ -55,13 +79,9 @@ function formUnameReg() {
 	document.getElementByIdName("demo").innerHTML = txt;
 }
 function formUnameLog() {
-	var txt = "";
-	if (document.getElementById("uname").validity.patternMismatch) {
-		txt = "Inserire 8 o più caratteri";
-	} else {
-		txt = "OK";
-	} 
-	document.getElementByIdName("demo").innerHTML = txt;
+	if (document.getElementByClassName("unameLog").value.length < 5) {
+		alert("Inserire 5 o più caratteri");
+	}
 }
 function formUnameLogA() {
 	var txt = "";
@@ -83,7 +103,7 @@ function formPassReg() {
 }
 function formRPassReg() {
 	var txt = "";
-	if (document.getElementById("pass").validity.patternMismatch) {
+	if (document.getElementById("pass").value.length < 8) {
 		txt = "Inserire 8 o più caratteri con almeno 1 carattere maiuscolo, 1 carattere minuscolo e 1 numero";
 	} else {
 		txt = "OK";
@@ -91,13 +111,9 @@ function formRPassReg() {
 	document.getElementByIdName("demo").innerHTML = txt;
 }
 function formPassLog() {
-	var txt = "";
-	if (document.getElementById("pass").validity.patternMismatch) {
-		txt = "Inserire 8 o più caratteri con almeno 1 carattere maiuscolo, 1 carattere minuscolo e 1 numero";
-	} else {
-		txt = "OK";
-	} 
-	document.getElementByIdName("demo").innerHTML = txt;
+	if (document.getElementByClassName("passLog").value.length < 8) {
+		alert("Inserire 8 o più caratteri con almeno 1 carattere maiuscolo, 1 carattere minuscolo e 1 numero");
+	}
 }
 function formPassLogA() {
 	var txt = "";
@@ -121,33 +137,3 @@ function formTel() {
 
 
 
-
-
-
-//Navigation Bar
-function myFunction() {
-	  var x = document.getElementById("myNavBar1");
-	  if (x.className === "navBar") {
-	    x.className += " responsive";
-	  } else {
-	    x.className = "navBar";
-	  }
-	}
-
-
-//When the user scrolls the page, execute myFunction
-window.onscroll = function() {stickyFunction()};
-
-
-var navBar = document.getElementById("myNavBar1");
-
-var sticky = navBar.offsetTop;
-
-// Add the sticky class to the navBar when you reach its scroll position. Remove "sticky" when you leave the scroll position
-function stickyFunction() {
-  if (window.pageYOffset >= sticky) {
-    navBar.classList.add("sticky")
-  } else {
-    navBar.classList.remove("sticky");
-  }
-}
