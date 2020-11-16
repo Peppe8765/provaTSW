@@ -31,7 +31,7 @@ public class RegisterServlet extends HttpServlet {
 		String user = request.getParameter("uname");
 		String pass1 = request.getParameter("pass");
 		String pass2 = request.getParameter("pass2");
-		String mess = "";
+	
 		UtenteModelDM utenteDM = new UtenteModelDM();
 		UtenteBean utente = new UtenteBean();
 		
@@ -50,13 +50,10 @@ public class RegisterServlet extends HttpServlet {
 				catch (SQLException e) {
 					e.printStackTrace();
 				}
-				mess = "registrazione effettuata";
+			
 				
 			}
-		}else {
-			mess ="registrazione fallita";
 		}
-		 	request.setAttribute("regMess", mess);
 			response.sendRedirect(response.encodeRedirectURL("Login.html"));
 	}
 

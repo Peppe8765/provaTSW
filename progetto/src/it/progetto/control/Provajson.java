@@ -54,7 +54,7 @@ public class Provajson extends HttpServlet {
     	
     	System.out.print(param);
     	PrintWriter out = response.getWriter();
-    	out.print("aggiunto il biglietto con coedice: " + param +" al carrello");
+    	out.print("aggiunto il biglietto con codice: " + param +" al carrello");
     	
     }
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

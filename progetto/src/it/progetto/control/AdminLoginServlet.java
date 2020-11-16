@@ -49,14 +49,14 @@ public class AdminLoginServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		System.out.println(utente);
+		
 		
 
 		
 		byte[] decodedBytes = Base64.getDecoder().decode(utente.getPassword());
 		String passDB= new String(decodedBytes);
 		System.out.println(passDB);
-		if(utente.getNomeUtente().equals(userName) && passDB.equals(password) && utente.getCodiceAdmin() == codiceAdmin) {
+		if(utente.getNomeUtente().equals(userName) && passDB.equals(password) && utente.getCodiceAdmin() == codiceAdmin && codiceAdmin != -1) {
 		
 			
 			HttpSession oldSession = request.getSession(false);
