@@ -1,3 +1,4 @@
+  
 <%@page import="com.mysql.cj.jdbc.Blob"%>
 <%@page import="it.progetto.model.UtenteBean"%>
 <%@ page import="it.progetto.model.EventoBean" %>
@@ -11,39 +12,28 @@
     
 <%
 String nomeUtente = (String)request.getSession().getAttribute("user");
-
 if(nomeUtente == null){
 	response.sendRedirect("./Login.html");
 	return;
 }
-
-
 Collection<TicketBean> tCollection = (Collection<TicketBean>)request.getAttribute("ticketsComponent");
 Collection<EventoBean> eCollection = (Collection<EventoBean>)request.getAttribute("eventsComponent");
 UtenteBean user = (UtenteBean)request.getAttribute("utente");
-
 if(tCollection == null){
 	response.sendRedirect(response.encodeRedirectURL("./ProfiloServlet"));
 	return;
 }
-
 if(eCollection == null){
 	response.sendRedirect(response.encodeRedirectURL("./ProfiloServlet"));
 	return;
 }
-
 if(user == null){
 	response.sendRedirect(response.encodeRedirectURL("./ProfiloServlet"));
 	return;
 }
-
-
-
 TicketBean tbean = new TicketBean();
 EventoBean event = new EventoBean();
-
 Blob foto = (Blob)user.getFotoProfilo();
-
 %>    
     
     
@@ -56,7 +46,7 @@ Blob foto = (Blob)user.getFotoProfilo();
 
 <link href="Home2.css" rel="stylesheet" type="text/css">
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-
+<link rel="icon" href="foto/TicketS.png">
 <title>Profilo</title>
 </head>
 <body>

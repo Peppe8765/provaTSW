@@ -6,12 +6,10 @@
     
 <%
 Collection<StadioBean> sCollection = (Collection<StadioBean>)request.getAttribute("stadii");
-
 if(sCollection == null){
 	response.sendRedirect(response.encodeRedirectURL("./StadiServlet"));
 	return;
 }
-
 StadioBean stadio = new StadioBean();
 %>    
     
@@ -23,7 +21,7 @@ StadioBean stadio = new StadioBean();
 <link rel="stylesheet" href="Home2.css" >
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<link rel="icon" href="foto/TicketS.png">
 <title>Stadi</title>
 </head>
 <body>

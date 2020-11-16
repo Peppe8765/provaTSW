@@ -10,21 +10,16 @@
 <%
 Collection<TicketBean> tCollection = (Collection<TicketBean>)request.getAttribute("tickets");
 Collection<EventoBean> ev = (Collection<EventoBean>)request.getAttribute("events");
-
 if(tCollection == null){
 	response.sendRedirect(response.encodeRedirectURL("./BigliettiServlet"));
 	return;
 }
-
 if(ev == null){
 	response.sendRedirect(response.encodeRedirectURL("./BigliettiServlet"));
 	return;
 }
-
 TicketBean tbean = new TicketBean();
 EventoBean event = new EventoBean();
-
-
 %>
     
 <!DOCTYPE html>
@@ -35,10 +30,9 @@ EventoBean event = new EventoBean();
 <link rel="stylesheet" href="Home2.css" >
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<link rel="icon" href="foto/TicketS.png">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <style>
-
 @media screen and (max-width: 768px) {
 	body {
 		font-size: 10px;
@@ -104,7 +98,6 @@ EventoBean event = new EventoBean();
 						event = OldEvent;
 						System.out.println(event);
 					}
-
 		}
 				itEv = ev.iterator();
 	%>				

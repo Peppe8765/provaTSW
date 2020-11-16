@@ -8,17 +8,12 @@
 <%
 Collection<EventoBean> eventCollection = (Collection<EventoBean>)request.getAttribute("eventStadio");
 String stadioName = (String)request.getParameter("stadioName");
-
 StadioBean stadio = (StadioBean)request.getAttribute("stadioS");
-
-
 if(stadio == null && eventCollection == null){
 	response.sendRedirect(response.encodeRedirectURL("./EventStadioServlet"));
 	return;
 }
-
 EventoBean event = new EventoBean();
-
 %>
 
 
@@ -30,7 +25,7 @@ EventoBean event = new EventoBean();
 <link rel="stylesheet" href="Home2.css" >
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<link rel="icon" href="foto/TicketS.png">
 <title><%=stadioName %></title>
 </head>
 <body>
@@ -61,7 +56,7 @@ EventoBean event = new EventoBean();
 	<div class="stadio col-8 col-s-10">
 	<h1><%=stadioName %></h1>	
 	
-<img alt="<%=stadio.getNome() %>" src="foto/<%=stadio.getNome() + ".jpg"%>" height="200">	
+<img alt="<%=stadio.getNome() %>" src="foto/<%=stadio.getNome() + ".jpg"%>" height="600">	
 	
 	
 	
@@ -80,7 +75,6 @@ EventoBean event = new EventoBean();
 		
 <%
 	Iterator<?> it = eventCollection.iterator();
-
 	while(it.hasNext()){
 		event = (EventoBean)it.next();
 		String id = "" + event.geteCodiceID();

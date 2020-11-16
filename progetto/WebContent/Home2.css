@@ -76,7 +76,7 @@ nav {
 	margin-right: auto;
 }
 .foto-gigante img {
-	max-width: 100%;
+	width: 100%;
 	height: auto;
 	display: block;
 	border: 2px solid purple;
@@ -489,10 +489,14 @@ th {
 	margin: auto;
 	margin-top: 30px;
 }
-.stadio h1 {
+.stadio h1, .stadio p {
 	text-align: center;
 	margin-top: 20px;
 	margin-bottom: 30px;
+}
+.stadio img{
+	height: auto;
+	max-width: 100%
 }
 /* Style the tab content */
 

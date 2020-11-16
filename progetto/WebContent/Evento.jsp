@@ -11,16 +11,10 @@
 Collection<TicketBean> ticketEventoC = (Collection<TicketBean>)request.getAttribute("ticketEventoC");
 EventoBean eventoS = (EventoBean)request.getAttribute("eventoS");
 String idEvent = request.getParameter("idEvent");
-
-
-
-
 if(eventoS == null && ticketEventoC == null) {
 	response.sendRedirect(response.encodeRedirectURL("./EventoServlet?IdEvent=" + idEvent));
 	return;
 }
-
-
 TicketBean tk = new TicketBean();
 tk.setCodiceBiglietto(1);
 ArrayList<Integer> ids = new ArrayList<Integer>(); 
@@ -35,7 +29,7 @@ ArrayList<Integer> ids = new ArrayList<Integer>();
 
 <link href="Home2.css" rel="stylesheet" type="text/css">
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-
+<link rel="icon" href="foto/TicketS.png">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <title><%=eventoS.getTitolo() %></title>
 </head>
@@ -95,7 +89,6 @@ ArrayList<Integer> ids = new ArrayList<Integer>();
 		codiceBiglietto = tk.getCodiceBiglietto();
 		
 		ids.add(codiceBiglietto);
-
 %>	
 
 		<tr>

@@ -8,8 +8,6 @@ if((adminRole == null) || (!adminRole.booleanValue())){
 	response.sendRedirect("./Login.html");
 	return;
 }
-
-
 %>
 
 
@@ -17,12 +15,10 @@ if((adminRole == null) || (!adminRole.booleanValue())){
 
 <%
 UtenteBean admin = (UtenteBean)request.getAttribute("Admin");
-
 if(admin == null){
 	response.sendRedirect(response.encodeRedirectURL("./AdminServlet"));
 	return;
 }
-
 %>    
     
       
@@ -31,6 +27,8 @@ if(admin == null){
 <head>
 <meta charset="UTF-8">
 <title>Pannello di controllo</title>
+<link rel="icon" href="foto/TicketS.png">
+
 </head>
 <link rel="stylesheet" href="Home2.css" >
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
@@ -93,7 +91,7 @@ if(admin == null){
 			<label for="Capienza">Capienza</label><br>
 			<input class="rettangoli" type="number" id="Capienza" name="Capienza" required="required"><br>
 			<label for="Descrizione">Descrizione</label><br>
-			<input class="rettangoli" type="text" id="Descrizione" name="Descrizione" required="required"><br>
+			<textarea class="rettangoli" rows="8" cols="50" id="Descrizione" name="Descrizione"></textarea><br>
 			<label for="Comune">Comune</label><br>
 			<input class="rettangoli" type="text" id="Comune" name="Comune" ><br>
 			<label for="Società">Società</label><br>

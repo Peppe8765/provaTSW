@@ -10,8 +10,6 @@ if(nomeUtente == null){
 	response.sendRedirect("./Login.html");
 	return;
 }
-
-
 	Cart<TicketBean> cart = (Cart<TicketBean>)request.getAttribute("carrello");
 	Collection<EventoBean> eC = (Collection<EventoBean>)request.getAttribute("eC");
 	
@@ -42,6 +40,7 @@ if(nomeUtente == null){
 	<meta charset="UTF-8">
 	<link href="Home2.css" rel="stylesheet" type="text/css">
 	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+	<link rel="icon" href="foto/TicketS.png">
 	<title>Carrello</title>
 </head>
 <body>
@@ -106,7 +105,6 @@ if(nomeUtente == null){
 						ev = OldEvent;
 					
 					}
-
 		}
 				itEv = eC.iterator();
 		%>
@@ -171,7 +169,7 @@ if(nomeUtente == null){
 			<label class="labelcar" for="Destinatario">Destinatario:</label><br>
 			<input class="rettangoli rettangolicar" type="text" id="Destinatario" name="Destinatario" placeholder="Nome Cognome" required><br>
 			<label class="labelcar" for="Telefono">Telefono:</label><br>
-			<input class="rettangoli rettangolicar" type="text" id="Telefono" name="Telefono" placeholder="000 0000000" required><br>
+			<input class="rettangoli rettangolicar" type="text" id="Telefono" name="Telefono" placeholder="000 0000000"  pattern="(?=.*\d).{10,}" title="Inserire almeno 10 cifre numeriche" required><br>
 			<p id="validtel"></p>
 			<input class="buttoncino buttoncinocar" type="submit" value="Acquista" >
 		</form>
@@ -179,7 +177,7 @@ if(nomeUtente == null){
 	
 	</div>
 
-<script src="FormValCar2.js"></script>
+
 <script src="NavBar.js"></script>
 
 </body>
