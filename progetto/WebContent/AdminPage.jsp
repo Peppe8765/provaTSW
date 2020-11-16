@@ -73,8 +73,15 @@ if(admin == null){
 		<p>Nome: <%=admin.getNomeUtente() %></p>
 		<p>Email: <%=admin.getEmail() %></p>
 		<p>Codice Admin: <%=admin.getCodiceAdmin() %></p>
+		<%
+	String message = (String)request.getAttribute("messageUser");
+	if(message != null && !message.equals("")){
+	%>
+	<p style="color: green;"><%=message %></p>
+	<%} %>
 	</div>
-
+	
+	
 	
 	<div id="AddStadio" class="tabcontent">
 		<form action="AdminServlet" method="get">
@@ -110,13 +117,13 @@ if(admin == null){
 			<label for="NomeStadio">Inserire il nome dello stadio da eliminare:</label><br>
 			<input class="rettangoli" type="text" id="NomeStadio" name="NomeStadio" required="required"><br>
 			<input class="buttoncino" type="submit" value="Rimuovi"><br>
-		</form>
+	</form>
 	
 	
 	</div>
 	
 	<div id="AddEvent" class="tabcontent">
-		<form action="">
+		<form action="AdminServlet" method="get">
 			<p>Aggiungere un evento</p>
 			<input type="text" id="action" name="action" value="addEvent" hidden="true">
 			<label for="Titolo">Titolo</label><br>
@@ -130,27 +137,30 @@ if(admin == null){
 			<label for="Radiobutton">Concerto</label><br>
 			<input type="radio" onclick="eventoSportivo()" id="RadioEventoSportivo" name="Radiobutton">
 			<label for="Radiobutton">Evento sportivo</label><br>
-		</form>
+		
 		
 		<div id="concerto" class="tabcontent tabcontent1">
-			<form action="">
+			
 				<p>Inserire il concerto</p>
 				<label for="Artista">Artista / Band</label><br>
-				<input class="rettangoli" type="text" id="Artista" name="Artista" required="required"><br>
-				</form>
+				<input class="rettangoli" type="text" id="Artista" name="Artista" ><br>
+				<input class="buttoncino" type="submit" value="Aggiungi"><br>
+				
 		</div>
 			
 		<div id="eventoSportivo" class="tabcontent tabcontent1">
-			<form action="">
+			
 				<p>Inserire l'evento sportivo</p>
 				<label for="Tipo">Tipo</label><br>
-				<input class="rettangoli" type="text" id="Tipo" name="Tipo" required="required"><br>
+				<input class="rettangoli" type="text" id="Tipo" name="Tipo" ><br>
 				<label for="Squadra1">Squadra1</label><br>
-				<input class="rettangoli" type="text" id="Squadra1" name="Squadra1" required="required"><br>
+				<input class="rettangoli" type="text" id="Squadra1" name="Squadra1" ><br>
 				<label for="Squadra2">Squadra2</label><br>
-				<input class="rettangoli" type="text" id="Squadra2" name="Squadra2" required="required"><br>
-				</form>
+				<input class="rettangoli" type="text" id="Squadra2" name="Squadra2" ><br>
+				<input class="buttoncino" type="submit" value="Aggiungi"><br>
+				
 		</div>
+		</form>
 	</div>
 	
 <div id="RemoveEvent" class="tabcontent">
