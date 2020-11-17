@@ -5,12 +5,12 @@ USE TicketS;
 
 #creazione tabella Comune
 CREATE TABLE Comune(
-Citt√† varchar(255) not null,
+Citt‡ varchar(255) not null,
 CCodiceID int auto_increment,
 PRIMARY KEY(CCodiceID));
 
-#creazione tabella Societ√†
-CREATE TABLE Societ√†(
+#creazione tabella Societ‡
+CREATE TABLE Societ‡(
 Nome varchar(255) not null,
 SCodiceID int auto_increment,
 AnnoFondazione Int default 0,
@@ -20,15 +20,15 @@ PRIMARY KEY(SCodiceID));
 CREATE TABLE Stadio (
 Nome varchar(255) not null,
 Nazione varchar(255) not null,
-Citt√† varchar(255) not null,
+Citt‡ varchar(255) not null,
 Indirizzo varchar(255) not null,
 Capienza Int default 0,
 Descrizione varchar(9999) not null,
 Comune_CCodiceID int ,
-Societ√†_SCodiceID int ,
+Societ‡_SCodiceID int ,
 PRIMARY KEY(Nome),
 foreign key(Comune_CCodiceID) references Comune(CCodiceID),
-foreign key(Societ√†_SCodiceID) references Societ√†(SCodiceID));
+foreign key(Societ‡_SCodiceID) references Societ‡(SCodiceID));
 
 #creazione tabella Evento
 CREATE TABLE Evento(
@@ -61,7 +61,7 @@ CREATE TABLE Biglietto(
 Codice_Biglietto int auto_increment,
 Settore varchar(255) not null,
 Costo double default 0.0,
-Quantit√† int not null,
+Quantit‡ int not null,
 Evento_ECodiceID int,
 PRIMARY KEY(Codice_Biglietto),
 foreign key(Evento_ECodiceID) references Evento(ECodiceID));
@@ -87,14 +87,14 @@ SELECT * FROM Evento WHERE Stadio_Nome = "San Siro";
 insert into utente(NomeUtente, password, Email, CodiceAdmin, FotoProfilo) values("utenteP","RmFiaW8xMjM=","abc@gmail.com",444444,null);
 
 #insert into acquista(utente_NomeUtente, Biglietto_Codice_Biglietto) values ("Angelo", 1);
-#update Biglietto set quantit√† = quantit√† -1 where Codice_Biglietto = 1; 
+#update Biglietto set quantit‡ = quantit‡ -1 where Codice_Biglietto = 1; 
 
 
 #select * from Evento;
 
 #select max(ECodiceID) FROM evento;
 
-#insert into Biglietto( Settore, Costo, Quantit√†, Evento_ECodiceID) values( "settore1", 10.0, 30, 1);
+#insert into Biglietto( Settore, Costo, Quantit‡, Evento_ECodiceID) values( "settore1", 10.0, 30, 1);
 
 #select * from Evento where ECodiceID = 10 and (select * from EventoSportivo where ECodiceID = Evento_ECodiceID); 
 #select * from Evento, eventosportivo where ECodiceID = Evento_ECodiceID order by ECodiceID;
